@@ -99,12 +99,6 @@
             opacity: 1;
             transform: none;
         }
-            /* Flip Card Styles */
-        .flip-card { perspective: 1000px; cursor: pointer; }
-        .flip-card-inner { position: relative; width: 100%; height: 100%; transition: transform 0.6s; transform-style: preserve-3d; }
-        .flip-card.flipped .flip-card-inner { transform: rotateY(180deg); }
-        .flip-card-front, .flip-card-back { position: absolute; top: 0; left: 0; width: 100%; height: 100%; backface-visibility: hidden; }
-        .flip-card-back { transform: rotateY(180deg); }
     </style>
 </head>
 <body class="bg-slate-900 text-white">
@@ -476,49 +470,6 @@
     
     mobileMenuBtn.addEventListener('click', () => {
         mobileMenu.classList.toggle('hidden');
-    });
-
-    // Flip card interaction
-    const cardDetails = {
-        "Plus de Sécurité": "Nous installerons 30 caméras supplémentaires dans les points sensibles, renforcerons la police municipale de 5 agents, mettrons en place une brigade de médiation nocturne et dévoilerons un plan de circulation afin de détourner les poids-lourds du centre-ville pour plus de tranquillité.",
-        "Une Ville Verte & Écolo": "Installation d’un parc solaire municipal couvrant 60 % des besoins de la ville, création de 20 bornes de recharge électrique, végétalisation des espaces publics et lancement d’un programme ‘zéro pesticide’ et compostage collectif.",
-        "Des Soins Accessibles": "Ouverture d’un centre médical ouvert 7 jours/7 avec permanence infirmière, aides financières pour attirer de nouveaux médecins, et mise en place d’une navette santé pour nos aînés.",
-        "Une Économie Dynamique": "Création d’une pépinière d’entreprises dans la zone artisanale, lancement d’un marketplace local pour les commerçants, valorisation du thermalisme et partenariat avec les stations voisines pour dynamiser le tourisme.",
-        "Une Vie de Quartier Active": "Organisation de cafés citoyens mensuels, navette gratuite entre les quartiers, aménagement de places conviviales et soutien aux associations pour animer la ville toute l’année.",
-        "Moins de Taxes, Plus de Services": "Diminution progressive de la taxe foncière de 10 % sur le mandat grâce à l’optimisation des dépenses et à la mutualisation des services, tout en maintenant un haut niveau de prestations publiques."
-    };
-
-    document.querySelectorAll('#program .card-hover').forEach(card => {
-        const title = card.querySelector('h3').textContent.trim();
-        const detailText = cardDetails[title] || '';
-        // Build structure
-        const frontWrapper = document.createElement('div');
-        frontWrapper.className = 'flip-card-front';
-        // Move existing children into frontWrapper
-        while (card.firstChild) {
-            frontWrapper.appendChild(card.firstChild);
-        }
-        const backWrapper = document.createElement('div');
-        backWrapper.className = 'flip-card-back flex flex-col justify-center items-start p-6 space-y-4';
-        backWrapper.innerHTML = `<h3 class=\"text-xl font-bold mb-3\">${title}</h3><p class=\"text-slate-300 text-sm\">${detailText}</p>`;
-
-        const inner = document.createElement('div');
-        inner.className = 'flip-card-inner';
-        inner.appendChild(frontWrapper);
-        inner.appendChild(backWrapper);
-
-        card.classList.add('flip-card');
-        card.appendChild(inner);
-
-        card.addEventListener('click', e => {
-            card.classList.toggle('flipped');
-            e.stopPropagation();
-        });
-        card.addEventListener('mouseleave', () => card.classList.remove('flipped'));
-    });
-
-    document.addEventListener('click', () => {
-        document.querySelectorAll('.flip-card.flipped').forEach(c => c.classList.remove('flipped'));
     });
 
     // Smooth scroll
