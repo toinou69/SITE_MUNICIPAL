@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Maxime Moulin - Municipales Montrond-les-Bains 2026</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Clash+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --marine-dark: #0f172a;
+            --marine: #1e293b;
+            --marine-light: #334155;
+            --accent: #3b82f6;
+            --accent-light: #60a5fa;
+        }
+        
+        body {
+            font-family: 'Manrope', sans-serif;
+            background: linear-gradient(135deg, var(--marine-dark) 0%, var(--marine) 100%);
+            color: #f8fafc;
+        }
+        
+        .font-display {
+            font-family: 'Clash Display', sans-serif;
+        }
+        
+        .hero-gradient {
+            background: linear-gradient(135deg, 
+                rgba(15, 23, 42, 0.9) 0%, 
+                rgba(30, 41, 59, 0.8) 50%, 
+                rgba(51, 65, 85, 0.7) 100%);
+        }
+        
+        .glass-effect {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .card-hover {
+            transition: all 0.3s ease;
+        }
+        
+        .card-hover:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+        }
+        
+        .btn-primary {
+            background: linear-gradient(135deg, var(--accent) 0%, var(--accent-light) 100%);
+            transition: all 0.3s ease;
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(59, 130, 246, 0.3);
+        }
+        
+        .section-fade {
+            opacity: 0;
+            transform: translateY(30px);
+        }
+        
+        .nav-blur {
+            background: rgba(15, 23, 42, 0.95);
+            backdrop-filter: blur(10px);
+        }
+        
+        .progress-bar {
+            background: linear-gradient(90deg, var(--accent) 0%, var(--accent-light) 100%);
+            height: 3px;
+            width: 0%;
+            transition: width 0.3s ease;
+        }
+        
+        .floating-element {
+            animation: float 6s ease-in-out infinite;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+        
+        .text-gradient {
+            background: linear-gradient(135deg, var(--accent) 0%, var(--accent-light) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .no-js .section-fade {
+            opacity: 1;
+            transform: none;
+        }
+    </style>
+</head>
+<body class="bg-slate-900 text-white">
+    <!-- Navigation -->
+    <nav id="navbar" class="fixed top-0 w-full z-50 nav-blur border-b border-slate-700/50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <div class="font-display font-semibold text-xl">
+                    Maxime <span class="text-blue-400">Moulin</span>
+                </div>
+                <div class="hidden md:flex space-x-8">
+                    <a href="#hero" class="nav-link text-slate-300 hover:text-white transition-colors">Accueil</a>
+                    <a href="#program" class="nav-link text-slate-300 hover:text-white transition-colors">Programme</a>
+                    <a href="#vision" class="nav-link text-slate-300 hover:text-white transition-colors">Vision 2026</a>
+                    <a href="#contact" class="nav-link text-slate-300 hover:text-white transition-colors">Contact</a>
+                </div>
+                <button id="mobile-menu-btn" class="md:hidden text-slate-300">
+                    <i class="fas fa-bars text-xl"></i>
+                </button>
+            </div>
+        </div>
+        <div id="mobile-menu" class="hidden md:hidden nav-blur border-t border-slate-700/50">
+            <div class="px-2 pt-2 pb-3 space-y-1">
+                <a href="#hero" class="block px-3 py-2 text-slate-300 hover:text-white">Accueil</a>
+                <a href="#program" class="block px-3 py-2 text-slate-300 hover:text-white">Programme</a>
+                <a href="#vision" class="block px-3 py-2 text-slate-300 hover:text-white">Vision 2026</a>
+                <a href="#contact" class="block px-3 py-2 text-slate-300 hover:text-white">Contact</a>
+            </div>
+        </div>
+        <div class="progress-bar"></div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="hero" class="relative min-h-screen flex items-center justify-center overflow-hidden">
+        <div class="absolute inset-0 hero-gradient"></div>
+        <div class="absolute inset-0">
+            <div class="absolute top-1/4 left-1/4 w-64 h-64 bg-blue-500/10 rounded-full floating-element"></div>
+            <div class="absolute bottom-1/4 right-1/4 w-96 h-96 bg-blue-600/5 rounded-full floating-element" style="animation-delay: -3s;"></div>
+        </div>
+        
+        <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <div class="section-fade">
+                <h1 class="font-display text-4xl sm:text-5xl md:text-7xl font-bold mb-6">
+                    <span class="text-gradient">Maxime Moulin</span>
+                </h1>
+                <p class="text-xl sm:text-2xl text-slate-300 mb-4">Divers droite - Municipales 2026</p>
+                <h2 class="text-2xl sm:text-3xl md:text-4xl font-light text-white mb-8">
+                    Ensemble, donnons un nouvel élan à Montrond-les-Bains
+                </h2>
+                <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                    <button onclick="scrollToSection('program')" class="btn-primary text-white px-8 py-4 rounded-lg font-semibold">
+                        Découvrir le programme
+                    </button>
+                    <button onclick="scrollToSection('contact')" class="glass-effect text-white px-8 py-4 rounded-lg font-semibold border border-slate-600">
+                        Nous rejoindre
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Program Section -->
+    <section id="program" class="py-20 bg-slate-800/50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16 section-fade">
+                <h2 class="font-display text-4xl md:text-5xl font-bold mb-4">
+                    Notre <span class="text-gradient">Programme</span>
+                </h2>
+                <p class="text-xl text-slate-300 max-w-3xl mx-auto">
+                    Des engagements concrets pour transformer Montrond-les-Bains
+                </p>
+            </div>
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Security -->
+                <div class="card-hover glass-effect rounded-xl p-6 section-fade">
+                    <div class="w-16 h-16 bg-blue-600/20 rounded-lg flex items-center justify-center mb-4">
+                        <i class="fas fa-shield-alt text-2xl text-blue-400"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Plus de Sécurité</h3>
+                    <p class="text-slate-300 mb-4">
+                        Agents renforcés & caméras pour protéger votre quotidien & dégager le trafic des Poids-lourd
+                    </p>
+                    <div class="text-blue-400 font-semibold">✓ En savoir plus</div>
+                </div>
+
+                <!-- Environment -->
+                <div class="card-hover glass-effect rounded-xl p-6 section-fade">
+                    <div class="w-16 h-16 bg-green-600/20 rounded-lg flex items-center justify-center mb-4">
+                        <i class="fas fa-leaf text-2xl text-green-400"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Une Ville Verte & Écolo</h3>
+                    <p class="text-slate-300 mb-4">
+                        Panneaux solaires, mobilité propre et déchets maîtrisés pour un environnement durable
+                    </p>
+                    <div class="text-green-400 font-semibold">✓ En savoir plus</div>
+                </div>
+
+                <!-- Healthcare -->
+                <div class="card-hover glass-effect rounded-xl p-6 section-fade">
+                    <div class="w-16 h-16 bg-red-600/20 rounded-lg flex items-center justify-center mb-4">
+                        <i class="fas fa-heartbeat text-2xl text-red-400"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Des Soins Accessibles</h3>
+                    <p class="text-slate-300 mb-4">
+                        Nouveau centre médical, médecins attirés et proximité pour votre santé
+                    </p>
+                    <div class="text-red-400 font-semibold">✓ En savoir plus</div>
+                </div>
+
+                <!-- Economy -->
+                <div class="card-hover glass-effect rounded-xl p-6 section-fade">
+                    <div class="w-16 h-16 bg-yellow-600/20 rounded-lg flex items-center justify-center mb-4">
+                        <i class="fas fa-chart-line text-2xl text-yellow-400"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Une Économie Dynamique</h3>
+                    <p class="text-slate-300 mb-4">
+                        Pépinière d'entreprises, aides aux commerces, emplois locaux pour dynamiser notre économie
+                    </p>
+                    <div class="text-yellow-400 font-semibold">✓ En savoir plus</div>
+                </div>
+
+                <!-- Community -->
+                <div class="card-hover glass-effect rounded-xl p-6 section-fade">
+                    <div class="w-16 h-16 bg-purple-600/20 rounded-lg flex items-center justify-center mb-4">
+                        <i class="fas fa-users text-2xl text-purple-400"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Une Vie de Quartier Active</h3>
+                    <p class="text-slate-300 mb-4">
+                        Navettes gratuites, animations, cafés citoyens & rencontres pour une vie communautaire riche
+                    </p>
+                    <div class="text-purple-400 font-semibold">✓ En savoir plus</div>
+                </div>
+
+                <!-- Tax Reduction -->
+                <div class="card-hover glass-effect rounded-xl p-6 section-fade">
+                    <div class="w-16 h-16 bg-emerald-600/20 rounded-lg flex items-center justify-center mb-4">
+                        <i class="fas fa-euro-sign text-2xl text-emerald-400"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Moins de Taxes, Plus de Services</h3>
+                    <p class="text-slate-300 mb-4">
+                        Baisse progressive de la taxe foncière pour soulager vos budgets tout en maintenant la qualité des services
+                    </p>
+                    <div class="text-emerald-400 font-semibold">✓ En savoir plus</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Vision 2026 Section -->
+    <section id="vision" class="py-20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16 section-fade">
+                <h2 class="font-display text-4xl md:text-5xl font-bold mb-4">
+                    Vision <span class="text-gradient">Montrond-les-Bains 2026</span>
+                </h2>
+                <p class="text-xl text-slate-300 max-w-3xl mx-auto">
+                    Plus vivante, plus sûre, plus verte
+                </p>
+            </div>
+
+            <div class="grid lg:grid-cols-2 gap-12 items-center">
+                <div class="section-fade">
+                    <h3 class="font-display text-3xl font-bold mb-6">Notre ambition</h3>
+                    <p class="text-lg text-slate-300 mb-6">
+                        Faire de notre ville un modèle de dynamisme, d'attractivité et de qualité de vie. Ensemble, nous voulons :
+                    </p>
+                    <ul class="space-y-4">
+                        <li class="flex items-start">
+                            <i class="fas fa-check-circle text-blue-400 mt-1 mr-3"></i>
+                            <span>Renforcer la sécurité et les solidarités, pour que chacun se sente protégé et soutenu</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check-circle text-blue-400 mt-1 mr-3"></i>
+                            <span>Favoriser l'accès aux soins, en attirant durablement des professionnels de santé</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check-circle text-blue-400 mt-1 mr-3"></i>
+                            <span>Redynamiser l'économie et le tourisme, pour créer de l'emploi et valoriser notre patrimoine</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check-circle text-blue-400 mt-1 mr-3"></i>
+                            <span>Accélérer la transition écologique, avec des actions concrètes, locales et mesurables</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check-circle text-blue-400 mt-1 mr-3"></i>
+                            <span>Améliorer le quotidien, en repensant la mobilité, les services et l'écoute des citoyens</span>
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="section-fade">
+                    <div class="glass-effect rounded-2xl p-8">
+                        <h4 class="font-display text-2xl font-bold mb-4">Synthèse du Programme</h4>
+                        <div class="space-y-4">
+                            <div>
+                                <h5 class="font-semibold text-blue-400">Sécurité & Solidarité</h5>
+                                <p class="text-sm text-slate-300">Renforcement des agents, caméras, accompagnement des aînés</p>
+                            </div>
+                            <div>
+                                <h5 class="font-semibold text-green-400">Transition Écologique</h5>
+                                <p class="text-sm text-slate-300">Panneaux solaires, mobilité propre, gestion des déchets</p>
+                            </div>
+                            <div>
+                                <h5 class="font-semibold text-purple-400">Développement Économique</h5>
+                                <p class="text-sm text-slate-300">Pépinière d'entreprises, tourisme, emplois locaux</p>
+                            </div>
+                            <div>
+                                <h5 class="font-semibold text-red-400">Accès aux Soins</h5>
+                                <p class="text-sm text-slate-300">Centre médical, médecins, lutte contre la désertification</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+<section id="contact" class="py-20 bg-slate-800/50">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-12 section-fade">
+            <h2 class="font-display text-4xl md:text-5xl font-bold mb-4">
+                Nous <span class="text-gradient">rejoindre</span>
+            </h2>
+            <p class="text-xl text-slate-300">
+                Montrond mérite une vision claire, des actes concrets, et une équipe engagée
+            </p>
+        </div>
+
+        <div class="grid md:grid-cols-2 gap-12">
+            <div class="section-fade">
+                <div class="glass-effect rounded-xl p-8">
+                    <h3 class="text-2xl font-bold mb-4">Contactez-nous</h3>
+                    <div class="space-y-4">
+                        <div>
+                            <i class="fas fa-envelope text-blue-400 mr-3"></i>
+                            <span>contact@maximemoulin-municipales2026.fr</span>
+                        </div>
+                        <div>
+                            <i class="fas fa-phone text-blue-400 mr-3"></i>
+                            <span>06 12 34 56 78</span>
+                        </div>
+                        <div>
+                            <i class="fas fa-map-marker-alt text-blue-400 mr-3"></i>
+                            <span>Campagne municipale 2026 - Montrond-les-Bains</span>
+                        </div>
+                    </div>
+                    
+                    <div class="mt-6 flex space-x-4">
+                        <button class="w-12 h-12 glass-effect rounded-full flex items-center justify-center hover:bg-blue-600/20 transition-colors">
+                            <i class="fab fa-facebook-f"></i>
+                        </button>
+                        <button class="w-12 h-12 glass-effect rounded-full flex items-center justify-center hover:bg-blue-600/20 transition-colors">
+                            <i class="fab fa-twitter"></i>
+                        </button>
+                        <button class="w-12 h-12 glass-effect rounded-full flex items-center justify-center hover:bg-blue-600/20 transition-colors">
+                            <i class="fab fa-instagram"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section-fade">
+                <div class="glass-effect rounded-xl p-8">
+                    <h3 class="text-2xl font-bold mb-4">Newsletter</h3>
+                    <p class="text-slate-300 mb-4">
+                        Restez informé de l'avancement de la campagne et des prochaines rencontres
+                    </p>
+                    <form id="newsletter-form" class="space-y-4">
+                        <input type="email" 
+                               placeholder="Votre email" 
+                               class="w-full px-4 py-3 bg-slate-700/50 border border-slate-600 rounded-lg focus:border-blue-400 focus:outline-none"
+                               required>
+                        <input type="text" 
+                               placeholder="Votre nom" 
+                               class="w-full px-4 py-3 bg-slate-700/50 border border-slate-600 rounded-lg focus:border-blue-400 focus:outline-none"
+                               required>
+                        <button type="submit" class="btn-primary w-full text-white py-3 rounded-lg font-semibold">
+                            S'abonner
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Footer -->
+<footer class="bg-slate-900 border-t border-slate-700 py-8">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center">
+            <p class="text-slate-400">
+                © 2025 Campagne municipale Maxime Moulin. Tous droits réservés.
+            </p>
+            <p class="text-sm text-slate-500 mt-2">
+                Montrond-les-Bains 2026 - Ensemble, donnons un nouvel élan
+            </p>
+        </div>
+    </div>
+</footer>
+
+<script>
+    // GSAP Animations
+    if (typeof gsap !== 'undefined' && typeof ScrollTrigger !== 'undefined') {
+        gsap.registerPlugin(ScrollTrigger);
+
+        // Hero parallax
+        gsap.to('.floating-element', {
+            yPercent: -50,
+            ease: 'none',
+            scrollTrigger: {
+                trigger: '#hero',
+                start: 'top bottom',
+                end: 'bottom top',
+                scrub: true
+            }
+        });
+
+        // Section fade in
+        gsap.utils.toArray('.section-fade').forEach(section => {
+            gsap.fromTo(section, {
+                opacity: 0,
+                y: 30
+            }, {
+                opacity: 1,
+                y: 0,
+                duration: 0.8,
+                ease: 'power2.out',
+                scrollTrigger: {
+                    trigger: section,
+                    start: 'top 95%',
+                    toggleActions: 'play none none reverse'
+                }
+            });
+        });
+    }
+
+    // Navigation
+    const navbar = document.getElementById('navbar');
+    const progressBar = document.querySelector('.progress-bar');
+    
+    window.addEventListener('scroll', () => {
+        const scrolled = (window.scrollY / (document.documentElement.scrollHeight - window.innerHeight)) * 100;
+        progressBar.style.width = scrolled + '%';
+        
+        if (window.scrollY > 100) {
+            navbar.classList.add('nav-blur');
+        } else {
+            navbar.classList.remove('nav-blur');
+        }
+    });
+
+    // Mobile menu
+    const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+    const mobileMenu = document.getElementById('mobile-menu');
+    
+    mobileMenuBtn.addEventListener('click', () => {
+        mobileMenu.classList.toggle('hidden');
+    });
+
+    // Smooth scroll
+    function scrollToSection(sectionId) {
+        document.getElementById(sectionId).scrollIntoView({ 
+            behavior: 'smooth' 
+        });
+    }
+
+    // Newsletter form
+    document.getElementById('newsletter-form').addEventListener('submit', (e) => {
+        e.preventDefault();
+        alert('Merci de votre inscription ! Vous recevrez prochainement nos actualités.');
+        e.target.reset();
+    });
+
+    // Active navigation
+    const navLinks = document.querySelectorAll('.nav-link');
+    const sections = document.querySelectorAll('section');
+
+    window.addEventListener('scroll', () => {
+        let current = '';
+        sections.forEach(section => {
+            const sectionTop = section.offsetTop;
+            const sectionHeight = section.clientHeight;
+            if (scrollY >= sectionTop - 200) {
+                current = section.getAttribute('id');
+            }
+        });
+
+        navLinks.forEach(link => {
+            link.classList.remove('text-blue-400');
+            if (link.getAttribute('href') === `#${current}`) {
+                link.classList.add('text-blue-400');
+            }
+        });
+    });
+</script>
+</body>
+</html>
+    <section id="contact" class="py-20 bg-slate-800/50">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12 section-fade">
+                <h2 class="font-display text-4xl md:text-5xl font-bold mb-4">
+                    Nous <span class="text-gradient">rejoindre</span>
+                </h2825 characters still exceed limit

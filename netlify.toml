@@ -1,0 +1,7 @@
+[build]
+  publish = "/"
+  command = ""
+
+# Uncomment below if you add Netlify Functions later
+#[functions]
+#  directory = "netlify/functions"
