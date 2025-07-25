@@ -3,78 +3,103 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Maxime Moulin - Municipales Montrond-les-Bains 2026</title>
+    <title>Maxime Moulin - Municipales 2026 Montrond-les-Bains</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Clash+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: {
+                            50: '#f0f9ff',
+                            100: '#e0f2fe',
+                            200: '#bae6fd',
+                            300: '#7dd3fc',
+                            400: '#38bdf8',
+                            500: '#0ea5e9',
+                            600: '#0284c7',
+                            700: '#0369a1',
+                            800: '#075985',
+                            900: '#0c4a6e',
+                        },
+                        accent: {
+                            red: '#ef4444'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        display: ['Montserrat', 'sans-serif']
+                    },
+                    animation: {
+                        'float': 'float 6s ease-in-out infinite',
+                        'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                        'neon-glow': 'neon-glow 2s ease-in-out infinite alternate'
+                    },
+                    keyframes: {
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-10px)' }
+                        },
+                        'neon-glow': {
+                            'from': { 'text-shadow': '0 0 5px #fff, 0 0 10px #fff, 0 0 15px #0073e6, 0 0 20px #0073e6' },
+                            'to': { 'text-shadow': '0 0 10px #fff, 0 0 20px #fff, 0 0 30px #0073e6, 0 0 40px #0073e6' }
+                        }
+                    }
+                }
+            }
+        }
+    </script>
     <style>
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap');
+        
         :root {
-            --marine-dark: #0f172a;
-            --marine: #1e293b;
-            --marine-light: #334155;
-            --accent: #3b82f6;
-            --accent-light: #60a5fa;
+            --detail-red: #ef4444;
+            --glass-bg: rgba(255, 255, 255, 0.1);
+            --glass-border: rgba(255, 255, 255, 0.2);
         }
         
         body {
-            font-family: 'Manrope', sans-serif;
-            background: linear-gradient(135deg, var(--marine-dark) 0%, var(--marine) 100%);
-            color: #f8fafc;
-        }
-        
-        .font-display {
-            font-family: 'Clash Display', sans-serif;
+            font-family: 'Inter', sans-serif;
+            @apply bg-white text-slate-900;
         }
         
         .hero-gradient {
-            background: linear-gradient(135deg, 
-                rgba(15, 23, 42, 0.9) 0%, 
-                rgba(30, 41, 59, 0.8) 50%, 
-                rgba(51, 65, 85, 0.7) 100%);
+            background: linear-gradient(135deg, rgba(15, 23, 42, 0.98) 0%, rgba(30, 58, 138, 0.9) 100%);
+        }
+        
+        .text-gradient {
+            background: linear-gradient(90deg, #0ea5e9 0%, #3b82f6 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
         }
         
         .glass-effect {
-            background: rgba(255, 255, 255, 0.05);
+            background: var(--glass-bg);
             backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid var(--glass-border);
         }
         
-        .card-hover {
-            transition: all 0.3s ease;
-        }
-        
-        .card-hover:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+        .nav-blur {
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
         }
         
         .btn-primary {
-            background: linear-gradient(135deg, var(--accent) 0%, var(--accent-light) 100%);
+            background: linear-gradient(90deg, #0ea5e9 0%, #3b82f6 100%);
             transition: all 0.3s ease;
         }
         
         .btn-primary:hover {
             transform: translateY(-2px);
-            box-shadow: 0 10px 30px rgba(59, 130, 246, 0.3);
-        }
-        
-        .section-fade {
-            opacity: 0;
-            transform: translateY(30px);
-        }
-        
-        .nav-blur {
-            background: rgba(15, 23, 42, 0.95);
-            backdrop-filter: blur(10px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(59, 130, 246, 0.3);
         }
         
         .progress-bar {
-            background: linear-gradient(90deg, var(--accent) 0%, var(--accent-light) 100%);
             height: 3px;
+            background: linear-gradient(90deg, #0ea5e9 0%, #3b82f6 100%);
             width: 0%;
             transition: width 0.3s ease;
         }
@@ -83,244 +108,1204 @@
             animation: float 6s ease-in-out infinite;
         }
         
-        @keyframes float {
-            0%, 100% { transform: translateY(0px); }
-            50% { transform: translateY(-20px); }
+        .card-hover:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
         }
         
-        .text-gradient {
-            background: linear-gradient(135deg, var(--accent) 0%, var(--accent-light) 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
+        .section-fade {
+            opacity: 0;
         }
         
-        .no-js .section-fade {
-            opacity: 1;
-            transform: none;
+        .neon-border {
+            box-shadow: 0 0 10px rgba(59, 130, 246, 0.7), 0 0 20px rgba(59, 130, 246, 0.5);
+        }
+        
+        .red-dot {
+            width: 6px;
+            height: 6px;
+            background-color: var(--detail-red);
+            border-radius: 50%;
+            display: inline-block;
+            margin-right: 8px;
         }
     </style>
 </head>
-<body class="bg-slate-900 text-white">
+<body class="bg-white text-slate-900">
     <!-- Navigation -->
-    <nav id="navbar" class="fixed top-0 w-full z-50 nav-blur border-b border-slate-700/50">
+    <nav id="navbar" class="fixed top-0 w-full z-50 nav-blur border-b border-blue-200/30">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between items-center h-16">
-                <div class="font-display font-semibold text-xl">
-                    Maxime <span class="text-blue-400">Moulin</span>
+                <div class="font-display font-bold text-2xl tracking-tight">
+                    <span class="text-blue-600">Maxime</span> <span class="text-red-500">Moulin</span>
                 </div>
-                <div class="hidden md:flex space-x-8">
-                    <a href="#hero" class="nav-link text-slate-300 hover:text-white transition-colors">Accueil</a>
-                    <a href="#program" class="nav-link text-slate-300 hover:text-white transition-colors">Programme</a>
-                    <a href="#vision" class="nav-link text-slate-300 hover:text-white transition-colors">Vision 2026</a>
-                    <a href="#contact" class="nav-link text-slate-300 hover:text-white transition-colors">Contact</a>
+                <div class="hidden md:flex space-x-8 items-center">
+                    <a href="#hero" class="nav-link text-slate-700 hover:text-blue-600 transition-colors font-medium">Accueil</a>
+                    <a href="#program" class="nav-link text-slate-700 hover:text-blue-600 transition-colors font-medium">Programme</a>
+                    <a href="#vision" class="nav-link text-slate-700 hover:text-blue-600 transition-colors font-medium">Vision 2026</a>
+                    <a href="#actions" class="nav-link text-slate-700 hover:text-blue-600 transition-colors font-medium">Actions</a>
+                    <a href="#contact" class="nav-link text-slate-700 hover:text-blue-600 transition-colors font-medium">Contact</a>
+                    <button onclick="scrollToSection('contact')" class="ml-4 glass-effect text-blue-600 px-6 py-2 rounded-full font-semibold border border-blue-200 hover:bg-blue-50 transition-all">
+                        Nous rejoindre
+                    </button>
                 </div>
-                <button id="mobile-menu-btn" class="md:hidden text-slate-300">
+                <button id="mobile-menu-btn" class="md:hidden text-blue-600">
                     <i class="fas fa-bars text-xl"></i>
                 </button>
             </div>
         </div>
-        <div id="mobile-menu" class="hidden md:hidden nav-blur border-t border-slate-700/50">
+        <div id="mobile-menu" class="hidden md:hidden nav-blur border-t border-blue-200/30">
             <div class="px-2 pt-2 pb-3 space-y-1">
-                <a href="#hero" class="block px-3 py-2 text-slate-300 hover:text-white">Accueil</a>
-                <a href="#program" class="block px-3 py-2 text-slate-300 hover:text-white">Programme</a>
-                <a href="#vision" class="block px-3 py-2 text-slate-300 hover:text-white">Vision 2026</a>
-                <a href="#contact" class="block px-3 py-2 text-slate-300 hover:text-white">Contact</a>
+                <a href="#hero" class="block px-3 py-2 text-slate-700 hover:text-blue-600 font-medium">Accueil</a>
+                <a href="#program" class="block px-3 py-2 text-slate-700 hover:text-blue-600 font-medium">Programme</a>
+                <a href="#vision" class="block px-3 py-2 text-slate-700 hover:text-blue-600 font-medium">Vision 2026</a>
+                <a href="#actions" class="block px-3 py-2 text-slate-700 hover:text-blue-600 font-medium">Actions</a>
+                <a href="#contact" class="block px-3 py-2 text-slate-700 hover:text-blue-600 font-medium">Contact</a>
             </div>
         </div>
         <div class="progress-bar"></div>
     </nav>
 
     <!-- Hero Section -->
-    <section id="hero" class="relative min-h-screen flex items-center justify-center overflow-hidden">
+    <section id="hero" class="relative min-h-screen flex items-center justify-center overflow-hidden bg-blue-900">
         <div class="absolute inset-0 hero-gradient"></div>
-        <div class="absolute inset-0">
-            <div class="absolute top-1/4 left-1/4 w-64 h-64 bg-blue-500/10 rounded-full floating-element"></div>
-            <div class="absolute bottom-1/4 right-1/4 w-96 h-96 bg-blue-600/5 rounded-full floating-element" style="animation-delay: -3s;"></div>
+        <div class="absolute inset-0 opacity-20">
+            <div class="absolute top-1/4 left-1/4 w-64 h-64 bg-blue-400 rounded-full floating-element" style="animation-delay: 0s;"></div>
+            <div class="absolute bottom-1/4 right-1/4 w-96 h-96 bg-blue-500 rounded-full floating-element" style="animation-delay: -3s;"></div>
+            <div class="absolute top-2/3 left-1/3 w-80 h-80 bg-blue-300 rounded-full floating-element" style="animation-delay: -5s;"></div>
         </div>
+        
+        <!-- Floating city silhouette -->
+        <div class="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-blue-900 to-transparent z-10"></div>
+        <div class="absolute bottom-0 left-0 right-0 h-20 bg-blue-900 opacity-30"></div>
         
         <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
             <div class="section-fade">
-                <h1 class="font-display text-4xl sm:text-5xl md:text-7xl font-bold mb-6">
+                <div class="glass-effect inline-block px-6 py-2 rounded-full mb-6 border border-blue-300/30">
+                    <p class="text-blue-100 font-medium">Municipales 2026 - Montrond-les-Bains</p>
+                </div>
+                <h1 class="font-display text-5xl sm:text-6xl md:text-7xl font-bold mb-6 text-white">
                     <span class="text-gradient">Maxime Moulin</span>
                 </h1>
-                <p class="text-xl sm:text-2xl text-slate-300 mb-4">Divers droite - Municipales 2026</p>
-                <h2 class="text-2xl sm:text-3xl md:text-4xl font-light text-white mb-8">
-                    Ensemble, donnons un nouvel élan à Montrond-les-Bains
+                <p class="text-xl sm:text-2xl text-blue-200 mb-6">Divers droite - Ensemble pour Montrond-les-Bains</p>
+                <h2 class="text-2xl sm:text-3xl md:text-4xl font-light text-blue-100 mb-10 max-w-4xl mx-auto leading-relaxed">
+                    <span class="font-bold text-white">Donnons un nouvel élan</span> à notre ville avec des solutions concrètes et ambitieuses
                 </h2>
                 <div class="flex flex-col sm:flex-row gap-4 justify-center">
-                    <button onclick="scrollToSection('program')" class="btn-primary text-white px-8 py-4 rounded-lg font-semibold">
+                    <button onclick="scrollToSection('program')" class="btn-primary text-white px-8 py-4 rounded-lg font-semibold transform transition-all hover:scale-105">
                         Découvrir le programme
                     </button>
-                    <button onclick="scrollToSection('contact')" class="glass-effect text-white px-8 py-4 rounded-lg font-semibold border border-slate-600">
+                    <button onclick="scrollToSection('contact')" class="glass-effect text-white px-8 py-4 rounded-lg font-semibold border border-blue-300/50 hover:bg-blue-800/30 transition-all transform hover:scale-105">
                         Nous rejoindre
                     </button>
                 </div>
             </div>
         </div>
+        
+        <!-- Scroll indicator -->
+        <div class="absolute bottom-10 left-1/2 transform -translate-x-1/2 z-10 animate-bounce">
+            <a href="#candidate" class="text-white">
+                <i class="fas fa-chevron-down text-2xl"></i>
+            </a>
+        </div>
+        
+        <!-- Neon accent elements -->
+        <div class="absolute top-20 right-20 w-4 h-4 bg-red-500 rounded-full opacity-70 animate-pulse-slow"></div>
+        <div class="absolute bottom-1/4 left-1/4 w-3 h-3 bg-red-500 rounded-full opacity-70 animate-pulse-slow" style="animation-delay: 0.5s;"></div>
     </section>
 
     <!-- Candidate Section -->
-    <section id="candidate" class="py-16 bg-slate-900">
-        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center gap-10 section-fade">
-            <img src="élections municipales montrond les bains 2026.png" alt="Photo de Maxime Moulin" class="w-60 h-60 md:w-72 md:h-72 rounded-full object-cover shadow-lg">
-            <div class="text-center md:text-left">
-                <h3 class="font-display text-3xl md:text-4xl font-bold mb-4">Votre candidat</h3>
-                <p class="text-lg text-slate-300">Engagé pour l'avenir de Montrond-les-Bains, Maxime Moulin met son expérience et sa passion au service de tous les habitants.</p>
+    <section id="candidate" class="py-20 bg-white">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center gap-12 section-fade">
+            <div class="relative">
+                <img src="maximemoulin2026.jpeg" alt="Photo de Maxime Moulin" class="w-72 h-72 md:w-80 md:h-80 rounded-full object-cover object-top shadow-xl border-4 border-white outline outline-1 outline-blue-100">
+                <div class="absolute -bottom-4 -right-4 glass-effect px-6 py-2 rounded-full border border-blue-200/50">
+                    <p class="text-blue-600 font-bold">Votre candidat</p>
+                </div>
+            </div>
+            <div class="text-center md:text-left max-w-2xl">
+                <h3 class="font-display text-3xl md:text-4xl font-bold mb-6 text-slate-800">Maxime Moulin, un engagement pour Montrond-les-Bains</h3>
+                <p class="text-lg text-slate-600 mb-6 leading-relaxed">
+                    Originaire de Montrond-les-Bains, j'ai toujours été profondément attaché à notre ville et à ses habitants. Après des études en gestion publique et plusieurs années d'engagement associatif, je me présente aujourd'hui pour apporter mon énergie et mes compétences au service de tous.
+                </p>
+                <div class="flex flex-wrap justify-center md:justify-start gap-3">
+                    <div class="glass-effect px-4 py-2 rounded-full flex items-center">
+                        <span class="red-dot"></span>
+                        <span class="text-sm font-medium text-slate-700">Engagé localement</span>
+                    </div>
+                    <div class="glass-effect px-4 py-2 rounded-full flex items-center">
+                        <span class="red-dot"></span>
+                        <span class="text-sm font-medium text-slate-700">Expérience publique</span>
+                    </div>
+                    <div class="glass-effect px-4 py-2 rounded-full flex items-center">
+                        <span class="red-dot"></span>
+                        <span class="text-sm font-medium text-slate-700">Vision pragmatique</span>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
 
     <!-- Program Section -->
-    <section id="program" class="py-20 bg-slate-800/50">
+    <section id="program" class="py-20 bg-gradient-to-b from-blue-50 to-white">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-16 section-fade">
-                <h2 class="font-display text-4xl md:text-5xl font-bold mb-4">
+                <h2 class="font-display text-4xl md:text-5xl font-bold mb-6 text-slate-800">
                     Notre <span class="text-gradient">Programme</span>
                 </h2>
-                <p class="text-xl text-slate-300 max-w-3xl mx-auto">
+                <p class="text-xl text-slate-600 max-w-3xl mx-auto">
                     Des engagements concrets pour transformer Montrond-les-Bains
                 </p>
             </div>
             
             <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
                 <!-- Security -->
-                <div class="card-hover glass-effect rounded-xl p-6 section-fade">
-                    <div class="w-16 h-16 bg-blue-600/20 rounded-lg flex items-center justify-center mb-4">
-                        <i class="fas fa-shield-alt text-2xl text-blue-400"></i>
+                <div class="card-hover bg-white rounded-xl p-8 shadow-lg section-fade transform transition-all hover:-translate-y-2">
+                    <div class="w-16 h-16 bg-blue-100 rounded-lg flex items-center justify-center mb-6">
+                        <i class="fas fa-shield-alt text-2xl text-blue-600"></i>
                     </div>
-                    <h3 class="text-xl font-bold mb-3">Plus de Sécurité</h3>
-                    <p class="text-slate-300 mb-4">
-                        Agents renforcés & caméras pour protéger votre quotidien & dégager le trafic des Poids-lourd
-                    </p>
-                    <div class="text-blue-400 font-semibold">✓ En savoir plus</div>
+                    <h3 class="text-2xl font-bold mb-4 text-slate-800">Sécurité renforcée</h3>
+                    <ul class="text-slate-600 mb-6 space-y-3">
+                        <li class="flex items-start">
+                            <span class="red-dot mt-1.5"></span>
+                            <span>4 à 6 agents municipaux supplémentaires</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="red-dot mt-1.5"></span>
+                            <span>Réseau de caméras surveillées 24h/24</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="red-dot mt-1.5"></span>
+                            <span>Application d'alerte citoyenne</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="red-dot mt-1.5"></span>
+                            <span>Détournement du trafic poids lourds</span>
+                        </li>
+                    </ul>
+                    <button class="learn-more text-blue-600 font-semibold flex items-center group">
+                        En savoir plus
+                        <i class="fas fa-arrow-right ml-2 transition-transform group-hover:translate-x-1"></i>
+                    </button>
+                    <div class="extra-content hidden mt-4 pt-4 border-t border-blue-100 text-slate-600 space-y-3">
+                        <p><strong>Sécurité, solidarité et services aux citoyens</strong></p>
+                        <p>Augmentation des agents municipaux et entretien du dispositif de caméras de surveillance.</p>
+                        <p>Mise en place d'une application d'alerte citoyenne disponible 24h/24 pour réagir immédiatement.</p>
+                    </div>
                 </div>
-
+                
                 <!-- Environment -->
-                <div class="card-hover glass-effect rounded-xl p-6 section-fade">
-                    <div class="w-16 h-16 bg-green-600/20 rounded-lg flex items-center justify-center mb-4">
-                        <i class="fas fa-leaf text-2xl text-green-400"></i>
+                <div class="card-hover bg-white rounded-xl p-8 shadow-lg section-fade transform transition-all hover:-translate-y-2">
+                    <div class="w-16 h-16 bg-green-100 rounded-lg flex items-center justify-center mb-6">
+                        <i class="fas fa-leaf text-2xl text-green-600"></i>
                     </div>
-                    <h3 class="text-xl font-bold mb-3">Une Ville Verte & Écolo</h3>
-                    <p class="text-slate-300 mb-4">
-                        Panneaux solaires, mobilité propre et déchets maîtrisés pour un environnement durable
-                    </p>
-                    <div class="text-green-400 font-semibold">✓ En savoir plus</div>
+                    <h3 class="text-2xl font-bold mb-4 text-slate-800">Ville verte & durable</h3>
+                    <ul class="text-slate-600 mb-6 space-y-3">
+                        <li class="flex items-start">
+                            <span class="red-dot mt-1.5"></span>
+                            <span>Panneaux solaires sur bâtiments publics</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="red-dot mt-1.5"></span>
+                            <span>Navette électrique gratuite</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="red-dot mt-1.5"></span>
+                            <span>Gestion durable des déchets</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="red-dot mt-1.5"></span>
+                            <span>Bassin de rétention des eaux</span>
+                        </li>
+                    </ul>
+                    <button class="learn-more text-green-600 font-semibold flex items-center group">
+                        En savoir plus
+                        <i class="fas fa-arrow-right ml-2 transition-transform group-hover:translate-x-1"></i>
+                    </button>
+                    <div class="extra-content hidden mt-4 pt-4 border-t border-green-100 text-slate-600 space-y-3">
+                        <p><strong>Transition énergétique</strong> : Installation de panneaux solaires sur les bâtiments publics pour réduire la consommation d'énergie.</p>
+                        <p><strong>Mobilité durable</strong> : Mise en place d'une navette électrique gratuite pour tous les habitants.</p>
+                    </div>
                 </div>
-
+                
                 <!-- Healthcare -->
-                <div class="card-hover glass-effect rounded-xl p-6 section-fade">
-                    <div class="w-16 h-16 bg-red-600/20 rounded-lg flex items-center justify-center mb-4">
-                        <i class="fas fa-heartbeat text-2xl text-red-400"></i>
+                <div class="card-hover bg-white rounded-xl p-8 shadow-lg section-fade transform transition-all hover:-translate-y-2">
+                    <div class="w-16 h-16 bg-red-100 rounded-lg flex items-center justify-center mb-6">
+                        <i class="fas fa-heartbeat text-2xl text-red-600"></i>
                     </div>
-                    <h3 class="text-xl font-bold mb-3">Des Soins Accessibles</h3>
-                    <p class="text-slate-300 mb-4">
-                        Nouveau centre médical, médecins attirés et proximité pour votre santé
-                    </p>
-                    <div class="text-red-400 font-semibold">✓ En savoir plus</div>
+                    <h3 class="text-2xl font-bold mb-4 text-slate-800">Accès aux soins</h3>
+                    <ul class="text-slate-600 mb-6 space-y-3">
+                        <li class="flex items-start">
+                            <span class="red-dot mt-1.5"></span>
+                            <span>Centre médical pluridisciplinaire</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="red-dot mt-1.5"></span>
+                            <span>Ouverture jusqu'à minuit</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="red-dot mt-1.5"></span>
+                            <span>Aides à l'installation</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="red-dot mt-1.5"></span>
+                            <span>Partenariat ARS/CPAM</span>
+                        </li>
+                    </ul>
+                    <button class="learn-more text-red-600 font-semibold flex items-center group">
+                        En savoir plus
+                        <i class="fas fa-arrow-right ml-2 transition-transform group-hover:translate-x-1"></i>
+                    </button>
+                    <div class="extra-content hidden mt-4 pt-4 border-t border-red-100 text-slate-600 space-y-3">
+                        <p>Création d'un centre médical pluridisciplinaire avec aides à l'installation des professionnels de santé, visant à renforcer l'accès aux soins et lutter contre la désertification médicale locale.</p>
+                    </div>
                 </div>
-
+                
                 <!-- Economy -->
-                <div class="card-hover glass-effect rounded-xl p-6 section-fade">
-                    <div class="w-16 h-16 bg-yellow-600/20 rounded-lg flex items-center justify-center mb-4">
-                        <i class="fas fa-chart-line text-2xl text-yellow-400"></i>
+                <div class="card-hover bg-white rounded-xl p-8 shadow-lg section-fade transform transition-all hover:-translate-y-2">
+                    <div class="w-16 h-16 bg-yellow-100 rounded-lg flex items-center justify-center mb-6">
+                        <i class="fas fa-chart-line text-2xl text-yellow-600"></i>
                     </div>
-                    <h3 class="text-xl font-bold mb-3">Une Économie Dynamique</h3>
-                    <p class="text-slate-300 mb-4">
-                        Pépinière d'entreprises, aides aux commerces, emplois locaux pour dynamiser notre économie
-                    </p>
-                    <div class="text-yellow-400 font-semibold">✓ En savoir plus</div>
+                    <h3 class="text-2xl font-bold mb-4 text-slate-800">Économie dynamique</h3>
+                    <ul class="text-slate-600 mb-6 space-y-3">
+                        <li class="flex items-start">
+                            <span class="red-dot mt-1.5"></span>
+                            <span>Zones d'activités avantageuses</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="red-dot mt-1.5"></span>
+                            <span>Incubateur d'entreprises locales</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="red-dot mt-1.5"></span>
+                            <span>Revitalisation du centre-ville</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="red-dot mt-1.5"></span>
+                            <span>Création d'emplois locaux</span>
+                        </li>
+                    </ul>
+                    <button class="learn-more text-yellow-600 font-semibold flex items-center group">
+                        En savoir plus
+                        <i class="fas fa-arrow-right ml-2 transition-transform group-hover:translate-x-1"></i>
+                    </button>
+                    <div class="extra-content hidden mt-4 pt-4 border-t border-yellow-100 text-slate-600 space-y-3">
+                        <p><strong>Territoire d'entrepreneurs</strong> : Nous aménageons des zones avec des avantages pour attirer des entreprises responsables, génératrices d'emplois locaux.</p>
+                        <p><strong>Aides aux commerces</strong> : Plan de relance commerciale — embellissement du centre-ville.</p>
+                    </div>
                 </div>
-
+                
                 <!-- Community -->
-                <div class="card-hover glass-effect rounded-xl p-6 section-fade">
-                    <div class="w-16 h-16 bg-purple-600/20 rounded-lg flex items-center justify-center mb-4">
-                        <i class="fas fa-users text-2xl text-purple-400"></i>
+                <div class="card-hover bg-white rounded-xl p-8 shadow-lg section-fade transform transition-all hover:-translate-y-2">
+                    <div class="w-16 h-16 bg-purple-100 rounded-lg flex items-center justify-center mb-6">
+                        <i class="fas fa-users text-2xl text-purple-600"></i>
                     </div>
-                    <h3 class="text-xl font-bold mb-3">Une Vie de Quartier Active</h3>
-                    <p class="text-slate-300 mb-4">
-                        Navettes gratuites, animations, cafés citoyens & rencontres pour une vie communautaire riche
-                    </p>
-                    <div class="text-purple-400 font-semibold">✓ En savoir plus</div>
+                    <h3 class="text-2xl font-bold mb-4 text-slate-800">Vie locale active</h3>
+                    <ul class="text-slate-600 mb-6 space-y-3">
+                        <li class="flex items-start">
+                            <span class="red-dot mt-1.5"></span>
+                            <span>Navette gratuite pour tous</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="red-dot mt-1.5"></span>
+                            <span>Animations patrimoniales</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="red-dot mt-1.5"></span>
+                            <span>Espace jeunesse moderne</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="red-dot mt-1.5"></span>
+                            <span>Centre aquatique rénové</span>
+                        </li>
+                    </ul>
+                    <button class="learn-more text-purple-600 font-semibold flex items-center group">
+                        En savoir plus
+                        <i class="fas fa-arrow-right ml-2 transition-transform group-hover:translate-x-1"></i>
+                    </button>
+                    <div class="extra-content hidden mt-4 pt-4 border-t border-purple-100 text-slate-600 space-y-3">
+                        <p>Pour une ville vivante : valorisation permanente de notre patrimoine par des animations, création d'un lieu de vie pour nos jeunes avec activités et rencontres, et création d'une zone de loisirs.</p>
+                    </div>
                 </div>
-
+                
                 <!-- Tax Reduction -->
-                <div class="card-hover glass-effect rounded-xl p-6 section-fade">
-                    <div class="w-16 h-16 bg-emerald-600/20 rounded-lg flex items-center justify-center mb-4">
-                        <i class="fas fa-euro-sign text-2xl text-emerald-400"></i>
+                <div class="card-hover bg-white rounded-xl p-8 shadow-lg section-fade transform transition-all hover:-translate-y-2">
+                    <div class="w-16 h-16 bg-blue-100 rounded-lg flex items-center justify-center mb-6">
+                        <i class="fas fa-euro-sign text-2xl text-blue-600"></i>
                     </div>
-                    <h3 class="text-xl font-bold mb-3">Moins de Taxes, Plus de Services</h3>
-                    <p class="text-slate-300 mb-4">
-                        Baisse progressive de la taxe foncière pour soulager vos budgets tout en maintenant la qualité des services
-                    </p>
-                    <div class="text-emerald-400 font-semibold">✓ En savoir plus</div>
+                    <h3 class="text-2xl font-bold mb-4 text-slate-800">Baisse des taxes</h3>
+                    <ul class="text-slate-600 mb-6 space-y-3">
+                        <li class="flex items-start">
+                            <span class="red-dot mt-1.5"></span>
+                            <span>Baisse progressive de la taxe foncière</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="red-dot mt-1.5"></span>
+                            <span>Recettes compensatoires</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="red-dot mt-1.5"></span>
+                            <span>Réduction de la dette</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="red-dot mt-1.5"></span>
+                            <span>Plus de pouvoir d'achat</span>
+                        </li>
+                    </ul>
+                    <button class="learn-more text-blue-600 font-semibold flex items-center group">
+                        En savoir plus
+                        <i class="fas fa-arrow-right ml-2 transition-transform group-hover:translate-x-1"></i>
+                    </button>
+                    <div class="extra-content hidden mt-4 pt-4 border-t border-blue-100 text-slate-600 space-y-3">
+                        <p>Baisse progressive de la taxe foncière compensée par nos nouvelles activités économiques pour faire de Montrond un territoire plus accessible aux familles.</p>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Vision 2026 Section -->
-    <section id="vision" class="py-20">
+    <section id="vision" class="py-20 bg-blue-900 text-white">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-16 section-fade">
-                <h2 class="font-display text-4xl md:text-5xl font-bold mb-4">
-                    Vision <span class="text-gradient">Montrond-les-Bains 2026</span>
+                <h2 class="font-display text-4xl md:text-5xl font-bold mb-6">
+                    Vision <span class="text-white">Montrond-les-Bains 2026</span>
                 </h2>
-                <p class="text-xl text-slate-300 max-w-3xl mx-auto">
+                <p class="text-xl text-blue-200 max-w-3xl mx-auto">
                     Plus vivante, plus sûre, plus verte
                 </p>
             </div>
 
-            <div class="grid lg:grid-cols-2 gap-12 items-center">
+            <!-- Main Vision Content -->
+            <div class="grid lg:grid-cols-2 gap-12 items-center mb-16">
                 <div class="section-fade">
-                    <h3 class="font-display text-3xl font-bold mb-6">Notre ambition</h3>
-                    <p class="text-lg text-slate-300 mb-6">
-                        Faire de notre ville un modèle de dynamisme, d'attractivité et de qualité de vie. Ensemble, nous voulons :
+                    <h3 class="font-display text-3xl font-bold mb-8">Notre ambition pour Montrond</h3>
+                    <p class="text-lg text-blue-100 mb-8 leading-relaxed">
+                        Montrond-les-Bains a tous les atouts pour rayonner : son patrimoine thermal unique, sa proximité avec Saint-Étienne, ses habitants dynamiques et attachés à leur territoire. Il ne manque qu'une équipe déterminée à révéler tout ce potentiel.
                     </p>
-                    <ul class="space-y-4">
+                    <p class="text-lg text-blue-100 mb-8 leading-relaxed">
+                        Ensemble, nous pouvons faire de notre commune un modèle d'attractivité, où il fait bon vivre, travailler et entreprendre. Chaque proposition de ce programme a été pensée pour vous, pour vos familles, pour l'avenir de nos enfants.
+                    </p>
+                    <ul class="space-y-5">
                         <li class="flex items-start">
-                            <i class="fas fa-check-circle text-blue-400 mt-1 mr-3"></i>
-                            <span>Renforcer la sécurité et les solidarités, pour que chacun se sente protégé et soutenu</span>
+                            <div class="flex-shrink-0 mt-1">
+                                <div class="w-6 h-6 rounded-full bg-red-500 flex items-center justify-center">
+                                    <i class="fas fa-check text-white text-xs"></i>
+                                </div>
+                            </div>
+                            <span class="ml-4 text-blue-100">Renforcer la sécurité et les solidarités, pour que chacun se sente protégé et soutenu</span>
                         </li>
                         <li class="flex items-start">
-                            <i class="fas fa-check-circle text-blue-400 mt-1 mr-3"></i>
-                            <span>Favoriser l'accès aux soins, en attirant durablement des professionnels de santé</span>
+                            <div class="flex-shrink-0 mt-1">
+                                <div class="w-6 h-6 rounded-full bg-red-500 flex items-center justify-center">
+                                    <i class="fas fa-check text-white text-xs"></i>
+                                </div>
+                            </div>
+                            <span class="ml-4 text-blue-100">Favoriser l'accès aux soins, en attirant durablement des professionnels de santé</span>
                         </li>
                         <li class="flex items-start">
-                            <i class="fas fa-check-circle text-blue-400 mt-1 mr-3"></i>
-                            <span>Redynamiser l'économie et le tourisme, pour créer de l'emploi et valoriser notre patrimoine</span>
+                            <div class="flex-shrink-0 mt-1">
+                                <div class="w-6 h-6 rounded-full bg-red-500 flex items-center justify-center">
+                                    <i class="fas fa-check text-white text-xs"></i>
+                                </div>
+                            </div>
+                            <span class="ml-4 text-blue-100">Redynamiser l'économie et le tourisme, pour créer de l'emploi et valoriser notre patrimoine</span>
                         </li>
                         <li class="flex items-start">
-                            <i class="fas fa-check-circle text-blue-400 mt-1 mr-3"></i>
-                            <span>Accélérer la transition écologique, avec des actions concrètes, locales et mesurables</span>
+                            <div class="flex-shrink-0 mt-1">
+                                <div class="w-6 h-6 rounded-full bg-red-500 flex items-center justify-center">
+                                    <i class="fas fa-check text-white text-xs"></i>
+                                </div>
+                            </div>
+                            <span class="ml-4 text-blue-100">Accélérer la transition écologique, avec des actions concrètes, locales et mesurables</span>
                         </li>
                         <li class="flex items-start">
-                            <i class="fas fa-check-circle text-blue-400 mt-1 mr-3"></i>
-                            <span>Améliorer le quotidien, en repensant la mobilité, les services et l'écoute des citoyens</span>
+                            <div class="flex-shrink-0 mt-1">
+                                <div class="w-6 h-6 rounded-full bg-red-500 flex items-center justify-center">
+                                    <i class="fas fa-check text-white text-xs"></i>
+                                </div>
+                            </div>
+                            <span class="ml-4 text-blue-100">Améliorer le quotidien, en repensant la mobilité, les services et l'écoute des citoyens</span>
                         </li>
                     </ul>
                 </div>
                 
                 <div class="section-fade">
-                    <div class="glass-effect rounded-2xl p-8">
-                        <h4 class="font-display text-2xl font-bold mb-4">Synthèse du Programme</h4>
-                        <div class="space-y-4">
-                            <div>
-                                <h5 class="font-semibold text-blue-400">Sécurité & Solidarité</h5>
-                                <p class="text-sm text-slate-300">Renforcement des agents, caméras, accompagnement des aînés</p>
+                    <div class="glass-effect rounded-2xl p-8 border border-blue-700/50">
+                        <h4 class="font-display text-2xl font-bold mb-6 text-center">Synthèse du Programme</h4>
+                        <div class="space-y-6">
+                            <div class="bg-blue-800/30 rounded-xl p-5">
+                                <h5 class="font-semibold text-blue-300 mb-2 flex items-center">
+                                    <i class="fas fa-shield-alt mr-2"></i> Sécurité & Solidarité
+                                </h5>
+                                <p class="text-sm text-blue-100">Renforcement des agents, caméras, accompagnement des aînés</p>
                             </div>
-                            <div>
-                                <h5 class="font-semibold text-green-400">Transition Écologique</h5>
-                                <p class="text-sm text-slate-300">Panneaux solaires, mobilité propre, gestion des déchets</p>
+                            <div class="bg-blue-800/30 rounded-xl p-5">
+                                <h5 class="font-semibold text-green-300 mb-2 flex items-center">
+                                    <i class="fas fa-leaf mr-2"></i> Transition Écologique
+                                </h5>
+                                <p class="text-sm text-blue-100">Panneaux solaires, mobilité propre, gestion des déchets</p>
                             </div>
-                            <div>
-                                <h5 class="font-semibold text-purple-400">Développement Économique</h5>
-                                <p class="text-sm text-slate-300">Pépinière d'entreprises, tourisme, emplois locaux</p>
+                            <div class="bg-blue-800/30 rounded-xl p-5">
+                                <h5 class="font-semibold text-yellow-300 mb-2 flex items-center">
+                                    <i class="fas fa-chart-line mr-2"></i> Développement Économique
+                                </h5>
+                                <p class="text-sm text-blue-100">Pépinière d'entreprises, tourisme, emplois locaux</p>
                             </div>
-                            <div>
-                                <h5 class="font-semibold text-red-400">Accès aux Soins</h5>
-                                <p class="text-sm text-slate-300">Centre médical, médecins, lutte contre la désertification</p>
+                            <div class="bg-blue-800/30 rounded-xl p-5">
+                                <h5 class="font-semibold text-red-300 mb-2 flex items-center">
+                                    <i class="fas fa-heartbeat mr-2"></i> Accès aux Soins
+                                </h5>
+                                <p class="text-sm text-blue-100">Centre médical, médecins, lutte contre la désertification</p>
                             </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Transparency & Commitment Section -->
+            <div class="section-fade">
+                <div class="glass-effect rounded-2xl p-8 border border-blue-700/50 mb-12">
+                    <div class="text-center mb-8">
+                        <h3 class="font-display text-2xl font-bold mb-4 text-white">Transparence & Engagement</h3>
+                        <div class="w-20 h-1 bg-red-500 mx-auto mb-6"></div>
+                    </div>
+                    
+                    <div class="grid md:grid-cols-2 gap-8">
+                        <div class="bg-blue-800/30 rounded-xl p-6">
+                            <div class="flex items-center mb-4">
+                                <i class="fas fa-calculator text-blue-300 text-xl mr-3"></i>
+                                <h4 class="font-semibold text-blue-200">Programmes chiffrés</h4>
+                            </div>
+                            <p class="text-blue-100 text-sm leading-relaxed">
+                                Toutes nos propositions sont budgétisées et chiffrées. Les programmes détaillés avec les coûts précis et les financements prévus vous seront communiqués lors de nos réunions publiques.
+                            </p>
+                        </div>
+                        
+                        <div class="bg-blue-800/30 rounded-xl p-6">
+                            <div class="flex items-center mb-4">
+                                <i class="fas fa-handshake text-green-300 text-xl mr-3"></i>
+                                <h4 class="font-semibold text-blue-200">Transparence financière</h4>
+                            </div>
+                            <p class="text-blue-100 text-sm leading-relaxed">
+                                La transparence financière est notre engagement, dès maintenant. Nous organiserons des réunions publiques dans les prochaines semaines pour vous présenter tous les détails.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Call to Action -->
+            <div class="section-fade">
+                <div class="text-center bg-gradient-to-r from-blue-800/50 to-blue-700/50 rounded-2xl p-8 border border-blue-600/30">
+                    <h3 class="font-display text-3xl font-bold mb-6 text-white">En mars 2026, donnons-nous les moyens de nos ambitions</h3>
+                    <p class="text-xl text-blue-100 mb-8 max-w-4xl mx-auto leading-relaxed">
+                        Votre voix compte, votre choix fera la différence. Maxime MOULIN et son équipe : l'élan dont Montrond a besoin.
+                    </p>
+                    
+                    <div class="grid md:grid-cols-2 gap-6 max-w-4xl mx-auto">
+                        <div class="glass-effect rounded-xl p-6 border border-blue-600/30">
+                            <div class="flex items-center justify-center mb-4">
+                                <i class="fas fa-calendar-alt text-yellow-400 text-2xl mr-3"></i>
+                                <h4 class="font-semibold text-blue-200">Réunions publiques</h4>
+                            </div>
+                            <p class="text-blue-100 text-sm mb-4">Calendrier des réunions publiques à venir</p>
+                            <button onclick="scrollToSection('contact')" class="btn-primary text-white px-6 py-2 rounded-lg font-semibold transform transition-all duration-200 hover:scale-105">
+                                Être informé
+                            </button>
+                        </div>
+                        
+                        <div class="glass-effect rounded-xl p-6 border border-blue-600/30">
+                            <div class="flex items-center justify-center mb-4">
+                                <i class="fas fa-file-alt text-red-400 text-2xl mr-3"></i>
+                                <h4 class="font-semibold text-blue-200">Programmes détaillés</h4>
+                            </div>
+                            <p class="text-blue-100 text-sm mb-4">Programmes détaillés disponibles sur demande</p>
+                            <button onclick="scrollToSection('contact')" class="glass-effect text-white px-6 py-2 rounded-lg font-semibold border border-blue-300/50 hover:bg-blue-800/30 transition-all duration-200 transform hover:scale-105">
+                                Demander
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Priority Actions Section -->
+    <section id="actions" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16 section-fade">
+                <h2 class="font-display text-4xl md:text-5xl font-bold mb-6">
+                    Actions <span class="text-gradient">prioritaires</span> par secteur
+                </h2>
+                <p class="text-xl text-slate-600 max-w-3xl mx-auto">
+                    Notre feuille de route par secteur
+                </p>
+            </div>
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <!-- Solidarité -->
+                <div class="bg-blue-50 rounded-xl p-6 section-fade transform transition-all hover:shadow-lg">
+                    <div class="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mb-4">
+                        <i class="fas fa-hand-holding-heart text-blue-600"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3 text-slate-800">Solidarité & Services</h3>
+                    <ul class="text-slate-600 text-sm space-y-2">
+                        <li class="flex items-start">
+                            <span class="red-dot mt-1.5"></span>
+                            <span>Service de bienveillance à domicile</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="red-dot mt-1.5"></span>
+                            <span>Permanences municipales numériques</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="red-dot mt-1.5"></span>
+                            <span>Accompagnement digital</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="red-dot mt-1.5"></span>
+                            <span>Lutte contre l'isolement</span>
+                        </li>
+                    </ul>
+                </div>
+                
+                <!-- Mobilité -->
+                <div class="bg-blue-50 rounded-xl p-6 section-fade transform transition-all hover:shadow-lg">
+                    <div class="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mb-4">
+                        <i class="fas fa-road text-blue-600"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3 text-slate-800">Mobilité & Cadre de Vie</h3>
+                    <ul class="text-slate-600 text-sm space-y-2">
+                        <li class="flex items-start">
+                            <span class="red-dot mt-1.5"></span>
+                            <span>Réaménagement sécurisé de la voirie</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="red-dot mt-1.5"></span>
+                            <span>Éclairage public LED performant</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="red-dot mt-1.5"></span>
+                            <span>Interdictions ciblées aux poids lourds</span>
+                        </li>
+                    </ul>
+                </div>
+                
+                <!-- Patrimoine -->
+                <div class="bg-blue-50 rounded-xl p-6 section-fade transform transition-all hover:shadow-lg">
+                    <div class="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mb-4">
+                        <i class="fas fa-landmark text-blue-600"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3 text-slate-800">Patrimoine & Tourisme</h3>
+                    <ul class="text-slate-600 text-sm space-y-2">
+                        <li class="flex items-start">
+                            <span class="red-dot mt-1.5"></span>
+                            <span>Valorisation patrimoniale</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="red-dot mt-1.5"></span>
+                            <span>Développement du logement touristique</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="red-dot mt-1.5"></span>
+                            <span>Embellissement urbain</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="red-dot mt-1.5"></span>
+                            <span>Animations culturelles</span>
+                        </li>
+                    </ul>
+                </div>
+                
+                <!-- Emploi & Jeunesse -->
+                <div class="bg-blue-50 rounded-xl p-6 section-fade transform transition-all hover:shadow-lg">
+                    <div class="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mb-4">
+                        <i class="fas fa-users text-blue-600"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3 text-slate-800">Emploi & Jeunesse</h3>
+                    <ul class="text-slate-600 text-sm space-y-2">
+                        <li class="flex items-start">
+                            <span class="red-dot mt-1.5"></span>
+                            <span>Rencontres entreprises-citoyens</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="red-dot mt-1.5"></span>
+                            <span>Événements pro-emploi</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="red-dot mt-1.5"></span>
+                            <span>Activités culturelles et sportives</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="red-dot mt-1.5"></span>
+                            <span>Inclusion numérique</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- School Modernization Section -->
+    <section id="schools" class="py-20 bg-gradient-to-b from-blue-50 to-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16 section-fade">
+                <h2 class="font-display text-4xl md:text-5xl font-bold mb-6 text-slate-800">
+                    Modernisation de nos <span class="text-gradient">écoles</span>
+                </h2>
+                <p class="text-xl text-slate-600 max-w-3xl mx-auto">
+                    Un environnement d'apprentissage moderne et adapté pour nos enfants
+                </p>
+            </div>
+
+            <!-- Main Content Grid -->
+            <div class="grid lg:grid-cols-3 gap-8 mb-16">
+                <!-- Digital Equipment -->
+                <div class="bg-white rounded-2xl p-8 shadow-lg section-fade transform transition-all hover:-translate-y-2">
+                    <div class="w-16 h-16 bg-blue-100 rounded-xl flex items-center justify-center mb-6">
+                        <i class="fas fa-laptop text-2xl text-blue-600"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-4 text-slate-800">Équipement informatique renforcé</h3>
+                    <ul class="text-slate-600 space-y-3 mb-6">
+                        <li class="flex items-start">
+                            <span class="red-dot mt-1.5"></span>
+                            <span>Classes nomades avec tablettes</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="red-dot mt-1.5"></span>
+                            <span>Tableaux numériques interactifs</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="red-dot mt-1.5"></span>
+                            <span>WiFi sécurisé dans toute l'école</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="red-dot mt-1.5"></span>
+                            <span>Espace numérique de travail (ENT)</span>
+                        </li>
+                    </ul>
+                    <div class="glass-effect rounded-lg p-4 border border-blue-200/50">
+                        <p class="text-sm text-slate-700">
+                            <i class="fas fa-euro-sign text-blue-600 mr-2"></i>
+                            <strong>Financement :</strong> Plan SNEE et Territoires Numériques Éducatifs
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Building Modernization -->
+                <div class="bg-white rounded-2xl p-8 shadow-lg section-fade transform transition-all hover:-translate-y-2">
+                    <div class="w-16 h-16 bg-green-100 rounded-xl flex items-center justify-center mb-6">
+                        <i class="fas fa-building text-2xl text-green-600"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-4 text-slate-800">Modernisation des bâtiments</h3>
+                    <ul class="text-slate-600 space-y-3 mb-6">
+                        <li class="flex items-start">
+                            <span class="red-dot mt-1.5"></span>
+                            <span>Rénovation énergétique complète</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="red-dot mt-1.5"></span>
+                            <span>Climatisation/ventilation naturelle</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="red-dot mt-1.5"></span>
+                            <span>Éclairage LED anti-fatigue</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="red-dot mt-1.5"></span>
+                            <span>Mobilier ergonomique local</span>
+                        </li>
+                    </ul>
+                    <div class="glass-effect rounded-lg p-4 border border-green-200/50">
+                        <p class="text-sm text-slate-700">
+                            <i class="fas fa-thermometer-half text-green-600 mr-2"></i>
+                            <strong>Priorité :</strong> Confort thermique optimal
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Well-being Actions -->
+                <div class="bg-white rounded-2xl p-8 shadow-lg section-fade transform transition-all hover:-translate-y-2">
+                    <div class="w-16 h-16 bg-purple-100 rounded-xl flex items-center justify-center mb-6">
+                        <i class="fas fa-heart text-2xl text-purple-600"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-4 text-slate-800">Actions bien-être</h3>
+                    <ul class="text-slate-600 space-y-3 mb-6">
+                        <li class="flex items-start">
+                            <span class="red-dot mt-1.5"></span>
+                            <span>Cours végétalisées et jardins</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="red-dot mt-1.5"></span>
+                            <span>Isolation phonique renforcée</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="red-dot mt-1.5"></span>
+                            <span>Cantine bio et locale</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="red-dot mt-1.5"></span>
+                            <span>Solutions cartables allégés</span>
+                        </li>
+                    </ul>
+                    <div class="glass-effect rounded-lg p-4 border border-purple-200/50">
+                        <p class="text-sm text-slate-700">
+                            <i class="fas fa-leaf text-purple-600 mr-2"></i>
+                            <strong>Objectif :</strong> Environnement apaisé et sain
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Success Examples -->
+            <div class="section-fade mb-16">
+                <div class="bg-gradient-to-r from-blue-600 to-blue-700 rounded-2xl p-8 text-white">
+                    <div class="text-center mb-8">
+                        <h3 class="font-display text-2xl font-bold mb-4">Exemples de réussites similaires</h3>
+                        <div class="w-20 h-1 bg-white mx-auto"></div>
+                    </div>
+                    
+                    <div class="grid md:grid-cols-3 gap-8">
+                        <div class="glass-effect rounded-xl p-6 border border-blue-400/30">
+                            <div class="flex items-center mb-4">
+                                <i class="fas fa-map-marker-alt text-yellow-400 text-xl mr-3"></i>
+                                <h4 class="font-semibold">Hérault</h4>
+                            </div>
+                            <p class="text-blue-100 text-sm">
+                                17 communes ont bénéficié du dispositif "Territoires Numériques Éducatifs" pour équiper leurs écoles. <strong>Pourquoi pas Montrond-les-Bains ?!</strong>
+                            </p>
+                        </div>
+                        
+                        <div class="glass-effect rounded-xl p-6 border border-blue-400/30">
+                            <div class="flex items-center mb-4">
+                                <i class="fas fa-map-marker-alt text-green-400 text-xl mr-3"></i>
+                                <h4 class="font-semibold">Normandie</h4>
+                            </div>
+                            <p class="text-blue-100 text-sm">
+                                375,51 M€ de subventions DSIL ont permis la rénovation de bâtiments publics dont les écoles
+                            </p>
+                        </div>
+                        
+                        <div class="glass-effect rounded-xl p-6 border border-blue-400/30">
+                            <div class="flex items-center mb-4">
+                                <i class="fas fa-lightbulb text-orange-400 text-xl mr-3"></i>
+                                <h4 class="font-semibold">Projets Cerema</h4>
+                            </div>
+                            <p class="text-blue-100 text-sm">
+                                "Écoles de demain" pour des bâtiments plus résilients et agréables
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Financing and Timeline -->
+            <div class="grid lg:grid-cols-2 gap-12">
+                <!-- Financing -->
+                <div class="section-fade">
+                    <div class="bg-white rounded-2xl p-8 shadow-lg">
+                        <div class="flex items-center mb-6">
+                            <div class="w-12 h-12 bg-yellow-100 rounded-lg flex items-center justify-center mr-4">
+                                <i class="fas fa-coins text-yellow-600 text-xl"></i>
+                            </div>
+                            <h3 class="text-2xl font-bold text-slate-800">Financement</h3>
+                        </div>
+                        
+                        <div class="space-y-4 mb-6">
+                            <div class="glass-effect rounded-lg p-4 border border-yellow-200/50">
+                                <p class="text-lg font-semibold text-slate-800 mb-2">
+                                    <i class="fas fa-calculator text-yellow-600 mr-2"></i>
+                                    Coût estimé : 150 000 € à 200 000 € par école
+                                </p>
+                            </div>
+                        </div>
+                        
+                        <h4 class="font-semibold text-slate-700 mb-4">Sources de financement :</h4>
+                        <ul class="space-y-3">
+                            <li class="flex items-start">
+                                <span class="red-dot mt-1.5"></span>
+                                <span class="text-slate-600">Subventions État (DSIL, SNEE)</span>
+                            </li>
+                            <li class="flex items-start">
+                                <span class="red-dot mt-1.5"></span>
+                                <span class="text-slate-600">Fonds européens</span>
+                            </li>
+                            <li class="flex items-start">
+                                <span class="red-dot mt-1.5"></span>
+                                <span class="text-slate-600">Banque des Territoires</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Timeline -->
+                <div class="section-fade">
+                    <div class="bg-white rounded-2xl p-8 shadow-lg">
+                        <div class="flex items-center mb-6">
+                            <div class="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mr-4">
+                                <i class="fas fa-calendar-alt text-blue-600 text-xl"></i>
+                            </div>
+                            <h3 class="text-2xl font-bold text-slate-800">Planning</h3>
+                        </div>
+                        
+                        <div class="space-y-6">
+                            <div class="relative">
+                                <div class="flex items-center">
+                                    <div class="w-8 h-8 bg-blue-600 rounded-full flex items-center justify-center text-white font-bold text-sm mr-4">
+                                        26
+                                    </div>
+                                    <div>
+                                        <h4 class="font-semibold text-slate-800">2026</h4>
+                                        <p class="text-slate-600 text-sm">Équipement numérique prioritaire</p>
+                                    </div>
+                                </div>
+                                <div class="absolute left-4 top-8 w-0.5 h-6 bg-blue-200"></div>
+                            </div>
+                            
+                            <div class="relative">
+                                <div class="flex items-center">
+                                    <div class="w-8 h-8 bg-green-600 rounded-full flex items-center justify-center text-white font-bold text-sm mr-4">
+                                        27
+                                    </div>
+                                    <div>
+                                        <h4 class="font-semibold text-slate-800">2027</h4>
+                                        <p class="text-slate-600 text-sm">Rénovation énergétique</p>
+                                    </div>
+                                </div>
+                                <div class="absolute left-4 top-8 w-0.5 h-6 bg-green-200"></div>
+                            </div>
+                            
+                            <div class="relative">
+                                <div class="flex items-center">
+                                    <div class="w-8 h-8 bg-purple-600 rounded-full flex items-center justify-center text-white font-bold text-sm mr-4">
+                                        28
+                                    </div>
+                                    <div>
+                                        <h4 class="font-semibold text-slate-800">2028</h4>
+                                        <p class="text-slate-600 text-sm">Finalisation mobilier et espaces verts</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="mt-8 glass-effect rounded-lg p-4 border border-blue-200/50">
+                            <p class="text-sm text-slate-700 text-center">
+                                <i class="fas fa-info-circle text-blue-600 mr-2"></i>
+                                <strong>Engagement :</strong> Suivi transparent de l'avancement des travaux
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Firefighters Section -->
+    <section id="firefighters" class="py-20 bg-gradient-to-b from-red-600 to-red-700 text-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16 section-fade">
+                <h2 class="font-display text-4xl md:text-5xl font-bold mb-6">
+                    Soutenir nos <span class="text-yellow-300">héros du quotidien</span>
+                </h2>
+                <p class="text-xl text-red-100 max-w-3xl mx-auto">
+                    Les pompiers volontaires de Montrond-les-Bains méritent notre reconnaissance et notre soutien
+                </p>
+            </div>
+
+            <!-- Hero Image/Icon Section -->
+            <div class="text-center mb-16 section-fade">
+                <div class="w-32 h-32 bg-red-800/50 rounded-full flex items-center justify-center mx-auto mb-6 glass-effect border border-red-400/30">
+                    <i class="fas fa-fire-flame-curved text-6xl text-yellow-300"></i>
+                </div>
+                <p class="text-lg text-red-100 max-w-2xl mx-auto leading-relaxed">
+                    Nos sapeurs-pompiers volontaires sont les gardiens de notre sécurité. Il est de notre devoir de les accompagner et de valoriser leur engagement exceptionnel.
+                </p>
+            </div>
+
+            <!-- Main Actions Grid -->
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
+                <!-- Extension des horaires -->
+                <div class="bg-red-800/30 rounded-2xl p-8 section-fade transform transition-all duration-200 hover:-translate-y-2 glass-effect border border-red-400/30">
+                    <div class="w-16 h-16 bg-red-700/50 rounded-xl flex items-center justify-center mb-6">
+                        <i class="fas fa-clock text-2xl text-yellow-300"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-4 text-white">Extension des horaires</h3>
+                    <p class="text-red-100 text-sm leading-relaxed">
+                        Extension des horaires de la caserne pour couvrir les pics d'intervention et assurer une meilleure réactivité.
+                    </p>
+                </div>
+
+                <!-- Aides aux familles -->
+                <div class="bg-red-800/30 rounded-2xl p-8 section-fade transform transition-all duration-200 hover:-translate-y-2 glass-effect border border-red-400/30">
+                    <div class="w-16 h-16 bg-red-700/50 rounded-xl flex items-center justify-center mb-6">
+                        <i class="fas fa-heart text-2xl text-yellow-300"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-4 text-white">Aides aux familles</h3>
+                    <p class="text-red-100 text-sm leading-relaxed">
+                        Soutien concret aux familles des SPV : colis de Noël, aide scolaire, et accompagnement dans leur quotidien.
+                    </p>
+                </div>
+
+                <!-- Collaboration entreprises -->
+                <div class="bg-red-800/30 rounded-2xl p-8 section-fade transform transition-all duration-200 hover:-translate-y-2 glass-effect border border-red-400/30">
+                    <div class="w-16 h-16 bg-red-700/50 rounded-xl flex items-center justify-center mb-6">
+                        <i class="fas fa-handshake text-2xl text-yellow-300"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-4 text-white">Collaboration entreprises</h3>
+                    <p class="text-red-100 text-sm leading-relaxed">
+                        Partenariat avec les entreprises locales pour libérer davantage les SPV en journée lors des interventions.
+                    </p>
+                </div>
+
+                <!-- Équipement moderne -->
+                <div class="bg-red-800/30 rounded-2xl p-8 section-fade transform transition-all duration-200 hover:-translate-y-2 glass-effect border border-red-400/30">
+                    <div class="w-16 h-16 bg-red-700/50 rounded-xl flex items-center justify-center mb-6">
+                        <i class="fas fa-truck text-2xl text-yellow-300"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-4 text-white">Équipement moderne</h3>
+                    <p class="text-red-100 text-sm leading-relaxed">
+                        Modernisation de la caserne et des véhicules grâce à un budget dédié pour des interventions plus efficaces.
+                    </p>
+                </div>
+
+                <!-- Reconnaissance -->
+                <div class="bg-red-800/30 rounded-2xl p-8 section-fade transform transition-all duration-200 hover:-translate-y-2 glass-effect border border-red-400/30">
+                    <div class="w-16 h-16 bg-red-700/50 rounded-xl flex items-center justify-center mb-6">
+                        <i class="fas fa-medal text-2xl text-yellow-300"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-4 text-white">Reconnaissance</h3>
+                    <p class="text-red-100 text-sm leading-relaxed">
+                        Prime communale et avantages concrets : transports, culture, pour valoriser leur dévouement.
+                    </p>
+                </div>
+
+                <!-- Avenir et recrutement -->
+                <div class="bg-red-800/30 rounded-2xl p-8 section-fade transform transition-all duration-200 hover:-translate-y-2 glass-effect border border-red-400/30">
+                    <div class="w-16 h-16 bg-red-700/50 rounded-xl flex items-center justify-center mb-6">
+                        <i class="fas fa-users text-2xl text-yellow-300"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-4 text-white">Avenir</h3>
+                    <p class="text-red-100 text-sm leading-relaxed">
+                        Sensibiliser les jeunes et faciliter l'engagement des actifs pour assurer la relève des SPV.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Call to Action -->
+            <div class="section-fade">
+                <div class="text-center bg-gradient-to-r from-red-800/50 to-red-700/50 rounded-2xl p-8 border border-red-500/30">
+                    <h3 class="font-display text-3xl font-bold mb-6 text-white">Un engagement fort pour nos sapeurs-pompiers</h3>
+                    <p class="text-xl text-red-100 mb-8 max-w-4xl mx-auto leading-relaxed">
+                        Parce qu'ils risquent leur vie pour protéger la nôtre, nos pompiers volontaires méritent tout notre soutien. Ensemble, donnons-leur les moyens d'accomplir leur mission dans les meilleures conditions.
+                    </p>
+                    
+                    <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                        <button onclick="scrollToSection('contact')" class="bg-yellow-500 hover:bg-yellow-400 text-red-900 px-8 py-4 rounded-lg font-semibold transform transition-all duration-200 hover:scale-105">
+                            Soutenir nos pompiers
+                        </button>
+                        <button onclick="scrollToSection('contact')" class="glass-effect text-white px-8 py-4 rounded-lg font-semibold border border-red-300/50 hover:bg-red-800/30 transition-all duration-200 transform hover:scale-105">
+                            En savoir plus
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Immediate Actions Section -->
+    <section id="immediate-actions" class="py-20 bg-gradient-to-b from-slate-50 to-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16 section-fade">
+                <div class="inline-flex items-center bg-blue-100 rounded-full px-6 py-2 mb-6">
+                    <i class="fas fa-lightbulb text-blue-600 mr-2"></i>
+                    <span class="text-blue-800 font-semibold">NOTRE MÉTHODE</span>
+                </div>
+                <h2 class="font-display text-4xl md:text-5xl font-bold mb-6 text-slate-800">
+                    L'efficacité au <span class="text-gradient">service de tous</span>
+                </h2>
+                <p class="text-xl text-slate-600 max-w-3xl mx-auto">
+                    Un plan d'action structuré et progressif pour transformer Montrond-les-Bains
+                </p>
+            </div>
+
+            <!-- Interactive Timeline -->
+            <div class="relative">
+                <!-- Timeline Line -->
+                <div class="absolute left-1/2 transform -translate-x-1/2 w-1 bg-gradient-to-b from-blue-500 via-green-500 to-purple-500 h-full timeline-progress"></div>
+                
+                <!-- Timeline Items -->
+                <div class="space-y-16">
+                    <!-- 100 premiers jours -->
+                    <div class="timeline-item section-fade" data-phase="immediate">
+                        <div class="flex items-center justify-center relative">
+                            <div class="timeline-marker w-16 h-16 bg-blue-600 rounded-full flex items-center justify-center text-white font-bold text-lg shadow-lg border-4 border-white relative z-10">
+                                100j
+                            </div>
+                        </div>
+                        <div class="grid lg:grid-cols-2 gap-12 mt-8">
+                            <div class="lg:text-right">
+                                <div class="bg-white rounded-2xl p-8 shadow-lg border-l-4 border-blue-500 timeline-card transition-all duration-200">
+                                    <div class="flex items-center justify-center lg:justify-end mb-4">
+                                        <i class="fas fa-rocket text-blue-600 text-2xl mr-3"></i>
+                                        <h3 class="text-2xl font-bold text-slate-800">Actions immédiates</h3>
+                                    </div>
+                                    <p class="text-slate-600 mb-6">Les 100 premiers jours - Mise en œuvre rapide</p>
+                                    <ul class="space-y-3 text-slate-700">
+                                        <li class="flex items-start lg:justify-end">
+                                            <span class="text-right">Mise en place des agents municipaux supplémentaires</span>
+                                            <span class="red-dot ml-2 lg:ml-0 lg:mr-2 order-first lg:order-last"></span>
+                                        </li>
+                                        <li class="flex items-start lg:justify-end">
+                                            <span class="text-right">Lancement des études pour le centre médical</span>
+                                            <span class="red-dot ml-2 lg:ml-0 lg:mr-2 order-first lg:order-last"></span>
+                                        </li>
+                                        <li class="flex items-start lg:justify-end">
+                                            <span class="text-right">Études détournement des poids lourds</span>
+                                            <span class="red-dot ml-2 lg:ml-0 lg:mr-2 order-first lg:order-last"></span>
+                                        </li>
+                                        <li class="flex items-start lg:justify-end">
+                                            <span class="text-right">Installation des premiers panneaux solaires</span>
+                                            <span class="red-dot ml-2 lg:ml-0 lg:mr-2 order-first lg:order-last"></span>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="lg:block hidden"></div>
+                        </div>
+                    </div>
+
+                    <!-- 1ère année -->
+                    <div class="timeline-item section-fade" data-phase="development">
+                        <div class="flex items-center justify-center relative">
+                            <div class="timeline-marker w-16 h-16 bg-green-600 rounded-full flex items-center justify-center text-white font-bold text-lg shadow-lg border-4 border-white relative z-10">
+                                1an
+                            </div>
+                        </div>
+                        <div class="grid lg:grid-cols-2 gap-12 mt-8">
+                            <div class="lg:block hidden"></div>
+                            <div>
+                                <div class="bg-white rounded-2xl p-8 shadow-lg border-l-4 border-green-500 timeline-card transition-all duration-200">
+                                    <div class="flex items-center mb-4">
+                                        <i class="fas fa-cogs text-green-600 text-2xl mr-3"></i>
+                                        <h3 class="text-2xl font-bold text-slate-800">Développement maîtrisé</h3>
+                                    </div>
+                                    <p class="text-slate-600 mb-6">Première année - Projets structurants</p>
+                                    <ul class="space-y-3 text-slate-700">
+                                        <li class="flex items-start">
+                                            <span class="red-dot mt-1.5"></span>
+                                            <span class="ml-2">Ouverture du centre médical</span>
+                                        </li>
+                                        <li class="flex items-start">
+                                            <span class="red-dot mt-1.5"></span>
+                                            <span class="ml-2">Déploiement de la navette électrique</span>
+                                        </li>
+                                        <li class="flex items-start">
+                                            <span class="red-dot mt-1.5"></span>
+                                            <span class="ml-2">Création de l'incubateur d'entreprises</span>
+                                        </li>
+                                        <li class="flex items-start">
+                                            <span class="red-dot mt-1.5"></span>
+                                            <span class="ml-2">Création de la Zone de Loisirs</span>
+                                        </li>
+                                        <li class="flex items-start">
+                                            <span class="red-dot mt-1.5"></span>
+                                            <span class="ml-2">Création de la Zone d'activités</span>
+                                        </li>
+                                        <li class="flex items-start">
+                                            <span class="red-dot mt-1.5"></span>
+                                            <span class="ml-2">Embellissement urbanisme par tronçon</span>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Mandat complet -->
+                    <div class="timeline-item section-fade" data-phase="transformation">
+                        <div class="flex items-center justify-center relative">
+                            <div class="timeline-marker w-16 h-16 bg-purple-600 rounded-full flex items-center justify-center text-white font-bold text-lg shadow-lg border-4 border-white relative z-10">
+                                2030
+                            </div>
+                        </div>
+                        <div class="grid lg:grid-cols-2 gap-12 mt-8">
+                            <div class="lg:text-right">
+                                <div class="bg-white rounded-2xl p-8 shadow-lg border-l-4 border-purple-500 timeline-card transition-all duration-200">
+                                    <div class="flex items-center justify-center lg:justify-end mb-4">
+                                        <i class="fas fa-trophy text-purple-600 text-2xl mr-3"></i>
+                                        <h3 class="text-2xl font-bold text-slate-800">Transformation durable</h3>
+                                    </div>
+                                    <p class="text-slate-600 mb-6">Mandat complet - Vision accomplie</p>
+                                    <ul class="space-y-3 text-slate-700">
+                                        <li class="flex items-start lg:justify-end">
+                                            <span class="text-right">Réduction fiscale progressive</span>
+                                            <span class="red-dot ml-2 lg:ml-0 lg:mr-2 order-first lg:order-last"></span>
+                                        </li>
+                                        <li class="flex items-start lg:justify-end">
+                                            <span class="text-right">Bassin de rétention Loire opérationnel</span>
+                                            <span class="red-dot ml-2 lg:ml-0 lg:mr-2 order-first lg:order-last"></span>
+                                        </li>
+                                        <li class="flex items-start lg:justify-end">
+                                            <span class="text-right">Zones d'activités développées et attractives</span>
+                                            <span class="red-dot ml-2 lg:ml-0 lg:mr-2 order-first lg:order-last"></span>
+                                        </li>
+                                        <li class="flex items-start lg:justify-end">
+                                            <span class="text-right">Orientation des Poids-lourds hors centre ville</span>
+                                            <span class="red-dot ml-2 lg:ml-0 lg:mr-2 order-first lg:order-last"></span>
+                                        </li>
+                                        <li class="flex items-start lg:justify-end">
+                                            <span class="text-right">Zone de Loisirs attractive</span>
+                                            <span class="red-dot ml-2 lg:ml-0 lg:mr-2 order-first lg:order-last"></span>
+                                        </li>
+                                        <li class="flex items-start lg:justify-end">
+                                            <span class="text-right">Embellissement et modernisation de la ville</span>
+                                            <span class="red-dot ml-2 lg:ml-0 lg:mr-2 order-first lg:order-last"></span>
+                                        </li>
+                                        <li class="flex items-start lg:justify-end">
+                                            <span class="text-right">Dynamisme économique</span>
+                                            <span class="red-dot ml-2 lg:ml-0 lg:mr-2 order-first lg:order-last"></span>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="lg:block hidden"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Progress Indicators -->
+            <div class="mt-16 section-fade">
+                <div class="bg-gradient-to-r from-blue-600 to-purple-600 rounded-2xl p-8 text-white">
+                    <div class="text-center mb-8">
+                        <h3 class="font-display text-2xl font-bold mb-4">Un engagement mesurable</h3>
+                        <div class="w-20 h-1 bg-white mx-auto"></div>
+                    </div>
+                    
+                    <div class="grid md:grid-cols-3 gap-8">
+                        <div class="text-center">
+                            <div class="w-16 h-16 bg-white/20 rounded-full flex items-center justify-center mx-auto mb-4">
+                                <i class="fas fa-calendar-check text-2xl"></i>
+                            </div>
+                            <h4 class="font-semibold mb-2">Suivi transparent</h4>
+                            <p class="text-blue-100 text-sm">Rapport d'avancement trimestriel sur chaque action</p>
+                        </div>
+                        
+                        <div class="text-center">
+                            <div class="w-16 h-16 bg-white/20 rounded-full flex items-center justify-center mx-auto mb-4">
+                                <i class="fas fa-users text-2xl"></i>
+                            </div>
+                            <h4 class="font-semibold mb-2">Participation citoyenne</h4>
+                            <p class="text-blue-100 text-sm">Consultation régulière des habitants sur l'avancement</p>
+                        </div>
+                        
+                        <div class="text-center">
+                            <div class="w-16 h-16 bg-white/20 rounded-full flex items-center justify-center mx-auto mb-4">
+                                <i class="fas fa-chart-line text-2xl"></i>
+                            </div>
+                            <h4 class="font-semibold mb-2">Résultats mesurés</h4>
+                            <p class="text-blue-100 text-sm">Indicateurs concrets de réussite pour chaque projet</p>
                         </div>
                     </div>
                 </div>
@@ -329,190 +1314,409 @@
     </section>
 
     <!-- Contact Section -->
-<section id="contact" class="py-20 bg-slate-800/50">
-    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="text-center mb-12 section-fade">
-            <h2 class="font-display text-4xl md:text-5xl font-bold mb-4">
-                Nous <span class="text-gradient">rejoindre</span>
-            </h2>
-            <p class="text-xl text-slate-300">
-                Montrond mérite une vision claire, des actes concrets, et une équipe engagée
-            </p>
-        </div>
+    <section id="contact" class="py-20 bg-blue-900 text-white">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16 section-fade">
+                <h2 class="font-display text-4xl md:text-5xl font-bold mb-6">
+                    Nous <span class="text-white">rejoindre</span>
+                </h2>
+                <p class="text-xl text-blue-200 max-w-3xl mx-auto">
+                    Montrond mérite une vision claire, des actes concrets, et une équipe engagée
+                </p>
+            </div>
 
-        <div class="grid md:grid-cols-2 gap-12">
-            <div class="section-fade">
-                <div class="glass-effect rounded-xl p-8">
-                    <h3 class="text-2xl font-bold mb-4">Contactez-nous</h3>
-                    <div class="space-y-4">
-                        <div>
-                            <i class="fas fa-envelope text-blue-400 mr-3"></i>
-                            <span>contact@maximemoulin-municipales2026.fr</span>
+            <div class="grid md:grid-cols-2 gap-12">
+                <div class="section-fade transition-all duration-150">
+                    <div class="glass-effect rounded-2xl p-8 border border-blue-700/50 transition-all duration-150 hover:border-blue-600/70">
+                        <h3 class="font-display text-2xl font-bold mb-6">Contactez-nous</h3>
+                        <div class="space-y-5">
+                            <div class="flex items-start transition-all duration-150 hover:transform hover:translate-x-1">
+                                <div class="flex-shrink-0 mt-1">
+                                    <i class="fas fa-envelope text-red-500"></i>
+                                </div>
+                                <div class="ml-4">
+                                    <p class="text-sm text-blue-200">Email</p>
+                                    <p class="text-blue-100 font-medium">montrondlesbains-municipale2026@gmail.com</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start transition-all duration-150 hover:transform hover:translate-x-1">
+                                <div class="flex-shrink-0 mt-1">
+                                    <i class="fas fa-map-marker-alt text-red-500"></i>
+                                </div>
+                                <div class="ml-4">
+                                    <p class="text-sm text-blue-200">Adresse</p>
+                                    <p class="text-blue-100 font-medium">Campagne municipale 2026<br>Montrond-les-Bains</p>
+                                </div>
+                            </div>
                         </div>
-                        <div>
-                            <i class="fas fa-phone text-blue-400 mr-3"></i>
-                            <span>06 12 34 56 78</span>
-                        </div>
-                        <div>
-                            <i class="fas fa-map-marker-alt text-blue-400 mr-3"></i>
-                            <span>Campagne municipale 2026 - Montrond-les-Bains</span>
+
+                        <div class="mt-8">
+                            <h4 class="font-medium text-blue-200 mb-4">Suivez-nous</h4>
+                            <div class="flex space-x-4">
+                                <a href="#" class="w-10 h-10 bg-blue-800/50 rounded-full flex items-center justify-center hover:bg-blue-700 transition-all duration-150 text-blue-200 hover:scale-110">
+                                    <i class="fab fa-facebook-f"></i>
+                                </a>
+                                <a href="#" class="w-10 h-10 bg-blue-800/50 rounded-full flex items-center justify-center hover:bg-blue-700 transition-all duration-150 text-blue-200 hover:scale-110">
+                                    <i class="fab fa-twitter"></i>
+                                </a>
+                                <a href="#" class="w-10 h-10 bg-blue-800/50 rounded-full flex items-center justify-center hover:bg-blue-700 transition-all duration-150 text-blue-200 hover:scale-110">
+                                    <i class="fab fa-instagram"></i>
+                                </a>
+                            </div>
                         </div>
                     </div>
-                    
-                    <div class="mt-6 flex space-x-4">
-                        <button class="w-12 h-12 glass-effect rounded-full flex items-center justify-center hover:bg-blue-600/20 transition-colors">
-                            <i class="fab fa-facebook-f"></i>
-                        </button>
-                        <button class="w-12 h-12 glass-effect rounded-full flex items-center justify-center hover:bg-blue-600/20 transition-colors">
-                            <i class="fab fa-twitter"></i>
-                        </button>
-                        <button class="w-12 h-12 glass-effect rounded-full flex items-center justify-center hover:bg-blue-600/20 transition-colors">
-                            <i class="fab fa-instagram"></i>
-                        </button>
+                </div>
+
+                <div class="section-fade transition-all duration-150">
+                    <div class="glass-effect rounded-2xl p-8 border border-blue-700/50 transition-all duration-150 hover:border-blue-600/70">
+                        <h3 class="font-display text-2xl font-bold mb-6">Newsletter</h3>
+                        <p class="text-blue-200 mb-6">
+                            Restez informé de l'avancement de la campagne et des prochaines rencontres
+                        </p>
+                        <form id="newsletter-form" class="space-y-5">
+                            <div>
+                                <label for="email" class="block text-sm font-medium text-blue-200 mb-1">Votre email</label>
+                                <input type="email" id="email" placeholder="votre@email.com" class="w-full px-4 py-3 bg-blue-800/30 border border-blue-700/50 rounded-lg focus:border-blue-400 focus:outline-none text-white placeholder-blue-400 transition-all duration-150" required>
+                            </div>
+                            <div>
+                                <label for="name" class="block text-sm font-medium text-blue-200 mb-1">Votre nom</label>
+                                <input type="text" id="name" placeholder="Votre nom" class="w-full px-4 py-3 bg-blue-800/30 border border-blue-700/50 rounded-lg focus:border-blue-400 focus:outline-none text-white placeholder-blue-400 transition-all duration-150" required>
+                            </div>
+                            <button type="submit" class="btn-primary w-full text-white py-3 rounded-lg font-semibold transform transition-all duration-150 hover:scale-[1.02]">
+                                S'abonner
+                            </button>
+                        </form>
                     </div>
                 </div>
             </div>
+        </div>
+    </section>
 
-            <div class="section-fade">
-                <div class="glass-effect rounded-xl p-8">
-                    <h3 class="text-2xl font-bold mb-4">Newsletter</h3>
-                    <p class="text-slate-300 mb-4">
-                        Restez informé de l'avancement de la campagne et des prochaines rencontres
+    <!-- Footer -->
+    <footer class="bg-blue-950 text-white py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-4 gap-10">
+                <div class="section-fade transition-all duration-150">
+                    <div class="flex items-center mb-4">
+                        <img src="Logo_blanc_mlb_footer.png" alt="Logo Montrond-les-Bains" class="h-12 w-auto mr-4 opacity-90 transition-all duration-150 hover:opacity-100">
+                        <div>
+                            <h4 class="font-display text-xl font-bold">Maxime Moulin</h4>
+                            <p class="text-blue-400 text-xs font-medium">Municipales 2026</p>
+                        </div>
+                    </div>
+                    <p class="text-blue-300 text-sm">
+                        Candidat aux élections municipales de 2026 à Montrond-les-Bains. Ensemble, donnons un nouvel élan à notre ville.
                     </p>
-                    <form id="newsletter-form" class="space-y-4">
-                        <input type="email" 
-                               placeholder="Votre email" 
-                               class="w-full px-4 py-3 bg-slate-700/50 border border-slate-600 rounded-lg focus:border-blue-400 focus:outline-none"
-                               required>
-                        <input type="text" 
-                               placeholder="Votre nom" 
-                               class="w-full px-4 py-3 bg-slate-700/50 border border-slate-600 rounded-lg focus:border-blue-400 focus:outline-none"
-                               required>
-                        <button type="submit" class="btn-primary w-full text-white py-3 rounded-lg font-semibold">
-                            S'abonner
-                        </button>
-                    </form>
+                </div>
+                <div class="section-fade transition-all duration-150">
+                    <h4 class="font-display text-xl font-bold mb-4">Navigation</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#hero" class="text-blue-300 hover:text-white transition-all duration-150 text-sm hover:translate-x-1">Accueil</a></li>
+                        <li><a href="#program" class="text-blue-300 hover:text-white transition-all duration-150 text-sm hover:translate-x-1">Programme</a></li>
+                        <li><a href="#vision" class="text-blue-300 hover:text-white transition-all duration-150 text-sm hover:translate-x-1">Vision 2026</a></li>
+                        <li><a href="#actions" class="text-blue-300 hover:text-white transition-all duration-150 text-sm hover:translate-x-1">Actions</a></li>
+                        <li><a href="#contact" class="text-blue-300 hover:text-white transition-all duration-150 text-sm hover:translate-x-1">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="section-fade transition-all duration-150">
+                    <h4 class="font-display text-xl font-bold mb-4">Réseaux</h4>
+                    <div class="flex space-x-4">
+                        <a href="#" class="w-10 h-10 bg-blue-900 rounded-full flex items-center justify-center hover:bg-blue-800 transition-all duration-150 hover:scale-110">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 bg-blue-900 rounded-full flex items-center justify-center hover:bg-blue-800 transition-all duration-150 hover:scale-110">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 bg-blue-900 rounded-full flex items-center justify-center hover:bg-blue-800 transition-all duration-150 hover:scale-110">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="section-fade transition-all duration-150">
+                    <h4 class="font-display text-xl font-bold mb-4">Légal</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-blue-300 hover:text-white transition-all duration-150 text-sm hover:translate-x-1">Mentions légales</a></li>
+                        <li><a href="#" class="text-blue-300 hover:text-white transition-all duration-150 text-sm hover:translate-x-1">Politique de confidentialité</a></li>
+                        <li><a href="#" class="text-blue-300 hover:text-white transition-all duration-150 text-sm hover:translate-x-1">Crédits</a></li>
+                    </ul>
                 </div>
             </div>
+            <div class="border-t border-blue-800 mt-12 pt-8 text-center section-fade transition-all duration-150">
+                <p class="text-blue-400 text-sm transition-all duration-150 hover:text-blue-300">
+                    © 2025 Campagne municipale Maxime Moulin. Tous droits réservés.
+                </p>
+                <p class="text-blue-500 text-xs mt-2">
+                    Montrond-les-Bains 2026 - Agissons Ensemble
+                </p>
+            </div>
         </div>
-    </div>
-</section>
+    </footer>
 
-<!-- Footer -->
-<footer class="bg-slate-900 border-t border-slate-700 py-8">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="text-center">
-            <img src="Logo_blanc_mlb_footer.png" alt="Logo Montrond-les-Bains" class="mx-auto mb-4 w-32">
-            <p class="text-slate-400">
-                © 2025 Campagne municipale Maxime Moulin. Tous droits réservés.
-            </p>
-            <p class="text-sm text-slate-500 mt-2">
-                Montrond-les-Bains 2026 - Ensemble, donnons un nouvel élan
-            </p>
-        </div>
-    </div>
-</footer>
+    <script>
+        // Enhanced Navigation with scroll effects
+        const navbar = document.getElementById('navbar');
+        const progressBar = document.querySelector('.progress-bar');
+        
+        // Intersection Observer for better performance
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
 
-<script>
-    // GSAP Animations
-    if (typeof gsap !== 'undefined' && typeof ScrollTrigger !== 'undefined') {
-        gsap.registerPlugin(ScrollTrigger);
+        const sectionObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('animate-in');
+                }
+            });
+        }, observerOptions);
 
-        // Hero parallax
-        gsap.to('.floating-element', {
-            yPercent: -50,
-            ease: 'none',
-            scrollTrigger: {
-                trigger: '#hero',
-                start: 'top bottom',
-                end: 'bottom top',
-                scrub: true
+        // Enhanced scroll handler with throttling
+        let ticking = false;
+        function updateOnScroll() {
+            const scrolled = (window.scrollY / (document.documentElement.scrollHeight - window.innerHeight)) * 100;
+            progressBar.style.width = scrolled + '%';
+            
+            if (window.scrollY > 100) {
+                navbar.classList.add('nav-blur', 'bg-white/95', 'backdrop-blur-md');
+                navbar.classList.remove('bg-white');
+            } else {
+                navbar.classList.remove('nav-blur', 'bg-white/95', 'backdrop-blur-md');
+                navbar.classList.add('bg-white');
+            }
+            
+            // Timeline animation
+            animateTimeline();
+            ticking = false;
+        }
+
+        window.addEventListener('scroll', () => {
+            if (!ticking) {
+                requestAnimationFrame(updateOnScroll);
+                ticking = true;
             }
         });
 
-        // Section fade in
-        gsap.utils.toArray('.section-fade').forEach(section => {
-            gsap.fromTo(section, {
-                opacity: 0,
-                y: 30
-            }, {
-                opacity: 1,
-                y: 0,
-                duration: 0.8,
-                ease: 'power2.out',
-                scrollTrigger: {
-                    trigger: section,
-                    start: 'top 95%',
-                    toggleActions: 'play none none reverse'
+        // Mobile menu with animation
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+            mobileMenuBtn.classList.toggle('rotate-90');
+        });
+
+        // Enhanced smooth scroll with easing
+        function scrollToSection(sectionId) {
+            const element = document.getElementById(sectionId);
+            const offsetTop = element.offsetTop - 80;
+            
+            window.scrollTo({
+                top: offsetTop,
+                behavior: 'smooth'
+            });
+            
+            // Close mobile menu if open
+            mobileMenu.classList.add('hidden');
+            mobileMenuBtn.classList.remove('rotate-90');
+        }
+
+        // Enhanced newsletter form with validation
+        document.getElementById('newsletter-form').addEventListener('submit', (e) => {
+            e.preventDefault();
+            const email = e.target.querySelector('#email').value;
+            const name = e.target.querySelector('#name').value;
+            
+            // Simple validation
+            if (email && name) {
+                // Show success animation
+                const button = e.target.querySelector('button[type="submit"]');
+                const originalText = button.innerHTML;
+                button.innerHTML = '<i class="fas fa-check mr-2"></i>Inscrit !';
+                button.classList.add('bg-green-600');
+                
+                setTimeout(() => {
+                    button.innerHTML = originalText;
+                    button.classList.remove('bg-green-600');
+                    e.target.reset();
+                }, 1200);
+            }
+        });
+
+        // Enhanced program cards with stagger animation
+        document.querySelectorAll('.learn-more').forEach((button, index) => {
+            button.addEventListener('click', (e) => {
+                e.preventDefault();
+                const card = button.closest('.card-hover');
+                const extraContent = card.querySelector('.extra-content');
+                
+                if (extraContent.classList.contains('hidden')) {
+                    extraContent.classList.remove('hidden');
+                    extraContent.style.maxHeight = '0px';
+                    extraContent.style.overflow = 'hidden';
+                    extraContent.style.transition = 'max-height 0.2s ease-out';
+                    
+                    setTimeout(() => {
+                        extraContent.style.maxHeight = extraContent.scrollHeight + 'px';
+                    }, 5);
+                    
+                    button.innerHTML = 'Voir moins <i class="fas fa-arrow-up ml-2"></i>';
+                } else {
+                    extraContent.style.maxHeight = '0px';
+                    setTimeout(() => {
+                        extraContent.classList.add('hidden');
+                        extraContent.style.maxHeight = '';
+                        extraContent.style.overflow = '';
+                    }, 200);
+                    
+                    button.innerHTML = 'En savoir plus <i class="fas fa-arrow-right ml-2 transition-transform group-hover:translate-x-1"></i>';
                 }
             });
         });
-    }
 
-    // Navigation
-    const navbar = document.getElementById('navbar');
-    const progressBar = document.querySelector('.progress-bar');
-    
-    window.addEventListener('scroll', () => {
-        const scrolled = (window.scrollY / (document.documentElement.scrollHeight - window.innerHeight)) * 100;
-        progressBar.style.width = scrolled + '%';
-        
-        if (window.scrollY > 100) {
-            navbar.classList.add('nav-blur');
-        } else {
-            navbar.classList.remove('nav-blur');
+        // Timeline Animation
+        function animateTimeline() {
+            const timelineItems = document.querySelectorAll('.timeline-item');
+            const timelineProgress = document.querySelector('.timeline-progress');
+            
+            if (!timelineProgress) return;
+            
+            const scrollTop = window.scrollY;
+            const windowHeight = window.innerHeight;
+            const timelineStart = timelineProgress.offsetTop;
+            const timelineHeight = timelineProgress.offsetHeight;
+            
+            // Calculate progress
+            const progress = Math.max(0, Math.min(1, (scrollTop + windowHeight - timelineStart) / (timelineHeight + windowHeight)));
+            
+            // Animate timeline items
+            timelineItems.forEach((item, index) => {
+                const itemProgress = (index + 1) / timelineItems.length;
+                const marker = item.querySelector('.timeline-marker');
+                const card = item.querySelector('.timeline-card');
+                
+                if (progress >= itemProgress - 0.2) {
+                    marker.style.transform = 'scale(1.1)';
+                    marker.style.boxShadow = '0 0 15px rgba(59, 130, 246, 0.6)';
+                    card.style.transform = 'translateY(0)';
+                    card.style.opacity = '1';
+                } else {
+                    marker.style.transform = 'scale(1)';
+                    marker.style.boxShadow = '0 4px 6px -1px rgba(0, 0, 0, 0.1)';
+                    card.style.transform = 'translateY(15px)';
+                    card.style.opacity = '0.8';
+                }
+            });
         }
-    });
 
-    // Mobile menu
-    const mobileMenuBtn = document.getElementById('mobile-menu-btn');
-    const mobileMenu = document.getElementById('mobile-menu');
-    
-    mobileMenuBtn.addEventListener('click', () => {
-        mobileMenu.classList.toggle('hidden');
-    });
+        // Enhanced scroll animations with stagger
+        function initScrollAnimations() {
+            const elements = document.querySelectorAll('.section-fade');
+            
+            elements.forEach((element, index) => {
+                element.style.opacity = '0';
+                element.style.transform = 'translateY(20px)';
+                element.style.transition = `opacity 0.4s ease-out ${index * 0.05}s, transform 0.4s ease-out ${index * 0.05}s`;
+                
+                sectionObserver.observe(element);
+            });
+            
+            // Timeline cards specific animation
+            const timelineCards = document.querySelectorAll('.timeline-card');
+            timelineCards.forEach(card => {
+                card.style.transform = 'translateY(10px)';
+                card.style.opacity = '0.9';
+                card.style.transition = 'transform 0.15s ease-out, opacity 0.15s ease-out';
+            });
+        }
 
-    // Smooth scroll
-    function scrollToSection(sectionId) {
-        document.getElementById(sectionId).scrollIntoView({ 
-            behavior: 'smooth' 
-        });
-    }
+        // Floating elements animation
+        function initFloatingElements() {
+            const floatingElements = document.querySelectorAll('.floating-element');
+            floatingElements.forEach((element, index) => {
+                element.style.animationDelay = `${index * 0.8}s`;
+            });
+        }
 
-    // Newsletter form
-    document.getElementById('newsletter-form').addEventListener('submit', (e) => {
-        e.preventDefault();
-        alert('Merci de votre inscription ! Vous recevrez prochainement nos actualités.');
-        e.target.reset();
-    });
+        // Parallax effect for hero section
+        function initParallax() {
+            const heroSection = document.getElementById('hero');
+            const floatingElements = heroSection.querySelectorAll('.floating-element');
+            
+            window.addEventListener('scroll', () => {
+                const scrolled = window.scrollY;
+                const rate = scrolled * -0.5;
+                
+                floatingElements.forEach((element, index) => {
+                    const speed = 0.5 + (index * 0.2);
+                    element.style.transform = `translateY(${rate * speed}px)`;
+                });
+            });
+        }
 
-    // Active navigation
-    const navLinks = document.querySelectorAll('.nav-link');
-    const sections = document.querySelectorAll('section');
+        // Active navigation highlighting
+        function initActiveNavigation() {
+            const navLinks = document.querySelectorAll('.nav-link');
+            const sections = document.querySelectorAll('section[id]');
+            
+            const navObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const id = entry.target.getAttribute('id');
+                        navLinks.forEach(link => {
+                            link.classList.remove('text-blue-600', 'font-bold');
+                            if (link.getAttribute('href') === `#${id}`) {
+                                link.classList.add('text-blue-600', 'font-bold');
+                            }
+                        });
+                    }
+                });
+            }, { threshold: 0.3 });
+            
+            sections.forEach(section => navObserver.observe(section));
+        }
 
-    window.addEventListener('scroll', () => {
-        let current = '';
-        sections.forEach(section => {
-            const sectionTop = section.offsetTop;
-            const sectionHeight = section.clientHeight;
-            if (scrollY >= sectionTop - 200) {
-                current = section.getAttribute('id');
+        // Add CSS class for animate-in
+        const style = document.createElement('style');
+        style.textContent = `
+            .animate-in {
+                opacity: 1 !important;
+                transform: translateY(0) !important;
             }
+            
+            .timeline-marker {
+                transition: all 0.2s ease;
+            }
+            
+            .card-hover {
+                transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+            }
+            
+            .card-hover:hover {
+                transform: translateY(-8px) scale(1.02);
+                box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.15);
+            }
+            
+            @keyframes pulse {
+                0%, 100% { opacity: 1; }
+                50% { opacity: 0.7; }
+            }
+        `;
+        document.head.appendChild(style);
+
+        // Initialize everything when DOM is loaded
+        document.addEventListener('DOMContentLoaded', () => {
+            initScrollAnimations();
+            initFloatingElements();
+            initParallax();
+            initActiveNavigation();
+            animateTimeline();
         });
 
-        navLinks.forEach(link => {
-            link.classList.remove('text-blue-400');
-            if (link.getAttribute('href') === `#${current}`) {
-                link.classList.add('text-blue-400');
-            }
-        });
-    });
-</script>
+        // Performance optimization: Reduce animations on slower devices
+        if (navigator.hardwareConcurrency && navigator.hardwareConcurrency < 4) {
+            document.documentElement.style.setProperty('--animation-duration', '0.3s');
+        }
+    </script>
 </body>
 </html>
-    <section id="contact" class="py-20 bg-slate-800/50">
-        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-12 section-fade">
-                <h2 class="font-display text-4xl md:text-5xl font-bold mb-4">
-                    Nous <span class="text-gradient">rejoindre</span>
-                </h2825 characters still exceed limit
